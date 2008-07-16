@@ -482,7 +482,7 @@ void CChildView::LoadHtml(LPCTSTR fileName) {
 			CString s = CharToWChar(buffer, r, CP_UTF8);
 			m_ctlInfo.AddText(s);
 		}
-
+		
 		m_ctlInfo.EndOfSource();
 
 		file.Close();
