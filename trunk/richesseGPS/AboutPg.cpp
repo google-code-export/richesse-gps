@@ -1,5 +1,5 @@
 /**
- *  CePropertyPage.cpp : implementation file
+ *  AboutPg.cpp
  *
  *  Copyright (C) 2008  David Andrs <pda@jasnapaka.com>
  *
@@ -18,10 +18,10 @@
  *
  */
 
-#include "../StdAfx.h"
-#include "../RichesseGPS.h"
-#include "CePropertyPage.h"
-#include "../../share/helpers.h"
+#include "StdAfx.h"
+#include "RichesseGPS.h"
+#include "AboutPg.h"
+#include "Config.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -30,50 +30,54 @@ static char THIS_FILE[] = __FILE__;
 #endif
 
 /////////////////////////////////////////////////////////////////////////////
-// CCePropertyPage property page
+// CAboutPg property page
 
-IMPLEMENT_DYNCREATE(CCePropertyPage, CPropertyPage)
+IMPLEMENT_DYNCREATE(CAboutPg, CCePropertyPage)
 
-CCePropertyPage::CCePropertyPage()
-{
-}
-
-
-CCePropertyPage::CCePropertyPage(UINT nIDTemplate, UINT nIDCaption/* = 0*/) : CPropertyPage(nIDTemplate, nIDCaption)
-{
-	//{{AFX_DATA_INIT(CCePropertyPage)
+CAboutPg::CAboutPg() : CCePropertyPage(CAboutPg::IDD) {
+	//{{AFX_DATA_INIT(CAboutPg)
 		// NOTE: the ClassWizard will add member initialization here
 	//}}AFX_DATA_INIT
 }
 
-CCePropertyPage::~CCePropertyPage()
-{
+CAboutPg::~CAboutPg() {
 }
 
-void CCePropertyPage::DoDataExchange(CDataExchange* pDX)
-{
-	CPropertyPage::DoDataExchange(pDX);
-	//{{AFX_DATA_MAP(CCePropertyPage)
-		// NOTE: the ClassWizard will add DDX and DDV calls here
+void CAboutPg::DoDataExchange(CDataExchange* pDX) {
+	CCePropertyPage::DoDataExchange(pDX);
+	//{{AFX_DATA_MAP(CAboutPg)
+	DDX_Control(pDX, IDC_HOMEPAGE_LINK, m_ctlHomepageLink);
 	//}}AFX_DATA_MAP
 }
 
 
-BEGIN_MESSAGE_MAP(CCePropertyPage, CPropertyPage)
-	//{{AFX_MSG_MAP(CCePropertyPage)
-		// NOTE: the ClassWizard will add message map macros here
+BEGIN_MESSAGE_MAP(CAboutPg, CCePropertyPage)
+	//{{AFX_MSG_MAP(CAboutPg)
+	ON_BN_CLICKED(IDC_HOMEPAGE_LINK, OnHomepageLink)
 	//}}AFX_MSG_MAP
-	ON_WM_SIZE()
 END_MESSAGE_MAP()
 
 /////////////////////////////////////////////////////////////////////////////
-// CCePropertyPage message handlers
+// CAboutPg message handlers
 
-void CCePropertyPage::ResizeControls() {
+void CAboutPg::OnOK() {
+	CCePropertyPage::OnOK();
 }
 
-void CCePropertyPage::OnSize(UINT nType, int cx, int cy) {
-	CPropertyPage::OnSize(nType, cx, cy);
+BOOL CAboutPg::OnInitDialog() {
+	CCePropertyPage::OnInitDialog();
 
-	ResizeControls();
+	return TRUE;
 }
+
+void CAboutPg::OnHomepageLink() {
+	SHELLEXECUTEINFO ei = { 0 };
+	ei.cbSize = sizeof(ei);
+	ei.fMask = SEE_MASK_NOCLOSEPROCESS;
+	ei.lpFile = _T("iexplore.exe");
+	CString strLink;
+	m_ctlHomepageLink.GetWindowText(strLink);
+	ei.lpParameters = strLink;
+	ShellExecuteEx(&ei);
+}
+

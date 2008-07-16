@@ -18,13 +18,13 @@
  *
  */
 
-#include "..\stdafx.h"
-#include "..\RichesseGPS.h"
+#include "../StdAfx.h"
+#include "../RichesseGPS.h"
 #include "files.h"
-#include "..\..\share\file.h"
-#include "..\..\share\helpers.h"
+#include "../../share/file.h"
+#include "../../share/helpers.h"
 
-#include "..\..\libexpat\expat.h"
+#include "../../libexpat/expat.h"
 
 
 #define BUFSIZ							8192

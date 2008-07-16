@@ -9,6 +9,7 @@
 #define IDD_INFO                        104
 #define IDD_ADD                         105
 #define IDD_ADD_NOTES                   106
+#define IDD_LICENSE                     107
 #define IDR_MAINFRAME                   128
 #define IDR_CANCEL                      130
 #define IDR_EDIT                        131
@@ -75,6 +76,7 @@
 #define IDS_COPY_STR                    236
 #define IDS_NO_WAYPOINT_SELECTED        237
 #define IDS_VIRTUAL                     238
+#define IDS_ABOUT                       239
 #define IDC_HOMEPAGE                    1000
 #define IDC_PATH                        1001
 #define IDC_DIRS                        1002
@@ -126,6 +128,8 @@
 #define IDC_COMPLETED_LBL               1047
 #define IDC_ITEMS                       1048
 #define IDC_PROGRESS                    1049
+#define IDC_HOMEPAGE_LINK               1050
+#define IDC_LICENSE                     1051
 #define ID_MENU_OPTIONS                 32772
 #define IDS_CAP_CANCEL                  32774
 #define ID_NEW_FOLDER                   32775
@@ -176,7 +180,7 @@
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NEXT_RESOURCE_VALUE        154
 #define _APS_NEXT_COMMAND_VALUE         32831
-#define _APS_NEXT_CONTROL_VALUE         1050
-#define _APS_NEXT_SYMED_VALUE           101
+#define _APS_NEXT_CONTROL_VALUE         1052
+#define _APS_NEXT_SYMED_VALUE           108
 #endif
 #endif

@@ -18,8 +18,8 @@
  *
  */
 
-#include "../stdafx.h"
-#include "../richessegps.h"
+#include "../StdAfx.h"
+#include "../RichesseGPS.h"
 #include "CeListCtrl.h"
 //#include "..\Appearance.h"
 

@@ -18,7 +18,7 @@
  *
  */
 
-#include "stdafx.h"
+#include "StdAfx.h"
 #include "RichesseGPS.h"
 
 #include "MainFrm.h"
@@ -26,8 +26,8 @@
 #include "ctrls/CePropertySheet.h"
 #include "SetupPg.h"
 #include "SetupGpsPg.h"
-#include "GpsInfoPg.h"
-#include "config.h"
+#include "GPSInfoPg.h"
+#include "Config.h"
 #include "PoiMan.h"
 
 #include "AddWaypointDlg.h"

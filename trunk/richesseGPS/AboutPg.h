@@ -1,5 +1,5 @@
 /**
- *  DownloadManagerDlg.h : header file
+ *  AboutPg.h
  *
  *  Copyright (C) 2008  David Andrs <pda@jasnapaka.com>
  *
@@ -18,63 +18,56 @@
  *
  */
 
-#if !defined(AFX_DOWNLOADMANAGERDLG_H__662D05A2_32F5_49A2_9A44_164349F0CA9D__INCLUDED_)
-#define AFX_DOWNLOADMANAGERDLG_H__662D05A2_32F5_49A2_9A44_164349F0CA9D__INCLUDED_
+#if !defined(AFX_TMANABOUTPG_H__09295F7D_AC63_4C8C_B9EC_82EE35D48DB1__INCLUDED_)
+#define AFX_TMANABOUTPG_H__09295F7D_AC63_4C8C_B9EC_82EE35D48DB1__INCLUDED_
 
 #if _MSC_VER > 1000
 #pragma once
 #endif // _MSC_VER > 1000
 
-#include "Config.h"
-#include "ctrls/CeDialog.h"
+#include "ctrls/LinkCtrl.h"
+#include "ctrls/CePropertyPage.h"
 
 /////////////////////////////////////////////////////////////////////////////
-// CDownloadManagerDlg dialog
+// CAboutPg dialog
 
-class CDownloadManagerDlg : public CCeDialog
+class CAboutPg : public CCePropertyPage
 {
+	DECLARE_DYNCREATE(CAboutPg)
+
 // Construction
 public:
-	CDownloadManagerDlg(CWnd* pParent = NULL);   // standard constructor
+	CAboutPg();
+	~CAboutPg();
 
 // Dialog Data
-	//{{AFX_DATA(CDownloadManagerDlg)
-	enum { IDD = IDD_DOWNLOAD };
-	CProgressCtrl	m_ctlProgress;
-	CListCtrl	m_ctlItems;
+	//{{AFX_DATA(CAboutPg)
+	enum { IDD = IDD_ABOUTBOX };
+	CLinkCtrl	m_ctlHomepageLink;
 	//}}AFX_DATA
 
-	CList<CPoi *, CPoi *> Pois;
 
 // Overrides
-	// ClassWizard generated virtual function overrides
-	//{{AFX_VIRTUAL(CDownloadManagerDlg)
+	// ClassWizard generate virtual function overrides
+	//{{AFX_VIRTUAL(CAboutPg)
+	public:
+	virtual void OnOK();
 	protected:
 	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV support
 	//}}AFX_VIRTUAL
 
 // Implementation
 protected:
-	HANDLE HThread;
-	BOOL Terminated;
-
-	void ThreadProc();
-	DWORD DownloadFile(const CString &url, const CString &strFileName);
-	void UpdateMenu();
-
 	// Generated message map functions
-	//{{AFX_MSG(CDownloadManagerDlg)
+	//{{AFX_MSG(CAboutPg)
 	virtual BOOL OnInitDialog();
-	afx_msg void OnSize(UINT nType, int cx, int cy);
+	afx_msg void OnHomepageLink();
 	//}}AFX_MSG
-	virtual void OnCancel();
-
 	DECLARE_MESSAGE_MAP()
 
-	friend DWORD WINAPI DownManThreadProc(LPVOID lpParam);
 };
 
 //{{AFX_INSERT_LOCATION}}
 // Microsoft Visual C++ will insert additional declarations immediately before the previous line.
 
-#endif // !defined(AFX_DOWNLOADMANAGERDLG_H__662D05A2_32F5_49A2_9A44_164349F0CA9D__INCLUDED_)
+#endif // !defined(AFX_tManAboutPg_H__09295F7D_AC63_4C8C_B9EC_82EE35D48DB1__INCLUDED_)

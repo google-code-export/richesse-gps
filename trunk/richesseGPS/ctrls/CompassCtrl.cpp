@@ -18,10 +18,10 @@
  *
  */
 
-#include "..\stdafx.h"
-#include "..\RichesseGPS.h"
+#include "../StdAfx.h"
+#include "../RichesseGPS.h"
 #include "CompassCtrl.h"
-#include "..\..\share\defs.h"
+#include "../../share/defs.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW

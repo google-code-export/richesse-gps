@@ -18,7 +18,7 @@
  *
  */
 
-#include "stdafx.h"
+#include "StdAfx.h"
 #include "RichesseGPS.h"
 #include "ChildView.h"
 #include "../share/helpers.h"

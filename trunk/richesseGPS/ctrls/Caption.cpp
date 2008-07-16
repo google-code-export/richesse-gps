@@ -18,12 +18,12 @@
  *
  */
 
-#include "..\stdafx.h"
-#include "..\richessegps.h"
+#include "../StdAfx.h"
+#include "../RichesseGPS.h"
 
 #include "Caption.h"
-#include "..\..\share\uihelper.h"
-#include "..\..\share\helpers.h"
+#include "../../share/UIHelper.h"
+#include "../../share/helpers.h"
 
 
 #ifdef _DEBUG

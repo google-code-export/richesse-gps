@@ -18,10 +18,10 @@
  *
  */
 
-#include "..\stdafx.h"
-#include "..\RichesseGPS.h"
+#include "../StdAfx.h"
+#include "../RichesseGPS.h"
 #include "files.h"
-#include "..\..\share\file.h"
+#include "../../share/file.h"
 #include "binfile.h"
 
 BOOL ReadRPFile(const CString &fileName, CList<CPoi *, CPoi *> &pois) {
