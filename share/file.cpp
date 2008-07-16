@@ -121,10 +121,12 @@ BOOL CBufferedFile::Read(LPVOID lpBuffer, DWORD nNumberOfBytesToRead, DWORD *nBy
 				
 				BufferStart = SetFilePointer(File, 0, NULL, FILE_CURRENT);
 				ret = ReadFile(File, Buffer, BufferSize, &read, NULL);
+				
 				BufferFilled = read;
 				BufferPos = 0;
-
-				if (!ret || read == 0)	{
+				
+				if (!ret) break;
+				if (ret && read == 0) {
 					// reading beyond the end of the file
 					ret = FALSE;
 					break;
@@ -137,6 +139,7 @@ BOOL CBufferedFile::Read(LPVOID lpBuffer, DWORD nNumberOfBytesToRead, DWORD *nBy
 				nRemain -= nToRead;
 				lpDest += nToRead;
 				BufferPos += nToRead;
+				break;
 			}
 		}
 	}
