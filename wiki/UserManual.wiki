@@ -1,0 +1,6 @@
+#summary UsersGuide
+#labels Featured
+
+= Users Guide =
+
+TODO: how to use RichesseGPS
