@@ -18,13 +18,14 @@
  *
  */
 
-#include "stdafx.h"
+#include "StdAfx.h"
 #include "RichesseGPS.h"
-#include "config.h"
+#include "Config.h"
 
 #include "MainFrm.h"
-#include "ctrls/cedialog.h"
-#include "ctrls/linkctrl.h"
+#include "ctrls/CePropertySheet.h"
+#include "AboutPg.h"
+#include "LicensePg.h"
 
 #include "files/files.h"
 
@@ -37,6 +38,7 @@ static char THIS_FILE[] = __FILE__;
 #endif
 
 
+#if 0
 /////////////////////////////////////////////////////////////////////////////
 // CAboutDlg dialog used for App About
 
@@ -93,7 +95,7 @@ BOOL CAboutDlg::OnInitDialog()  {
 	return TRUE;  // return TRUE unless you set the focus to a control
 	              // EXCEPTION: OCX Property Pages should return FALSE
 }
-
+#endif
 
 /////////////////////////////////////////////////////////////////////////////
 // CRichesseGPSApp
@@ -160,8 +162,14 @@ BOOL CRichesseGPSApp::InitInstance() {
 
 // App command to run the dialog
 void CRichesseGPSApp::OnAppAbout() {
-	CAboutDlg aboutDlg;
-	aboutDlg.DoModal();
+	CAboutPg pgAbout;
+	CLicensePg pgLicense;
+	
+	CCePropertySheet sheet(IDS_ABOUT);
+	sheet.AddPage(&pgAbout);
+	sheet.AddPage(&pgLicense);
+	sheet.SetMenu(IDR_CANCEL);
+	sheet.DoModal();
 }
 
 

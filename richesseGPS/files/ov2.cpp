@@ -18,11 +18,11 @@
  *
  */
 
-#include "..\stdafx.h"
-#include "..\RichesseGPS.h"
+#include "../StdAfx.h"
+#include "../RichesseGPS.h"
 #include "files.h"
-#include "..\..\share\file.h"
-#include "..\..\share\helpers.h"
+#include "../../share/file.h"
+#include "../../share/helpers.h"
 
 
 BOOL ReadOV2File(const CString &fileName, CList<CPoi *, CPoi *> &pois) {

@@ -18,9 +18,9 @@
  *
  */
 
-#include "..\stdafx.h"
+#include "../StdAfx.h"
 //#include "resource.h"
-#include "..\richessegps.h"
+#include "../RichesseGPS.h"
 
 #include "CePropertySheet.h"
 

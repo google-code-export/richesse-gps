@@ -18,11 +18,11 @@
  *
  */
 
-#include "..\stdafx.h"
-#include "..\richessegps.h"
+#include "../StdAfx.h"
+#include "../RichesseGPS.h"
 #include "PoiListCtrl.h"
-#include "..\Config.h"
-#include "..\..\share\helpers.h"
+#include "../Config.h"
+#include "../../share/helpers.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW

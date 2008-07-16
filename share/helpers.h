@@ -21,7 +21,7 @@
 #ifndef _HELPERS_H_
 #define _HELPERS_H_
 
-#include "../richesseGps/config.h"
+#include "../richesseGPS/Config.h"
 
 BOOL SysError(int resID, DWORD err, BOOL quiet, ...);
 

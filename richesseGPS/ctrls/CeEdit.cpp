@@ -18,8 +18,8 @@
  *
  */
 
-#include "..\stdafx.h"
-#include "..\RichesseGPS.h"
+#include "../StdAfx.h"
+#include "../RichesseGPS.h"
 #include "CeEdit.h"
 
 #ifdef _DEBUG

@@ -18,9 +18,9 @@
  *
  */
 
-#include "..\stdafx.h"
-#include "..\RichesseGPS.h"
-#include "..\config.h"
+#include "../StdAfx.h"
+#include "../RichesseGPS.h"
+#include "../Config.h"
 #include "gps.h"
 
 //#define LOG_GPS

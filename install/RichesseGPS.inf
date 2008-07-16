@@ -27,7 +27,7 @@
 [DestinationDirs]
 	Shortcuts                      = ,%CE11%
 	Files.ARM                      = ,%InstallDir%
-	Libs.ARM                       = ,%CE2%
+	Libs.ARM                       = ,%InstallDir%
 
 ;
 ; ARM
@@ -37,13 +37,18 @@
 	BuildMax=0xE0000000
 
 [SourceDisksNames.ARM]
-	1 = ,"Bin files",,bin
+	1 = ,"RichesseGPS",,..\richesseGPS\prj\ARMV4Rel
+	2 = ,"Setup",,..\setup\prj\ARMV4Rel
+	3 = ,"libexpat",,..\libexpat
+	4 = ,"License",,..
+	5 = ,"Here",,.
 
 [SourceDisksFiles.ARM]
 	RichesseGPS.exe = 1
-	.pois = 1
-	libexpat.dll = 1
-	setup.dll = 1
+	setup.dll = 2
+	libexpat.dll = 3
+	COPYING = 4
+	.pois = 5
 
 [DefaultInstall.ARM]
 	CEShortcuts  = Shortcuts
@@ -53,6 +58,7 @@
 
 [Files.ARM]
 	RichesseGPS.exe,,,0x80000000
+	COPYING,,,0x80000000
 	.pois,,,0x00000010
 
 [Libs.ARM]

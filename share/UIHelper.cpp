@@ -12,7 +12,7 @@ Abstract:
 
 --*/
 
-#include "uihelper.h"
+#include "UIHelper.h"
 
 HIDPI_ENABLE;
 

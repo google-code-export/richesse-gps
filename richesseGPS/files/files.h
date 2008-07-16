@@ -21,7 +21,7 @@
 #ifndef _FILES_H_INCLUDED_
 #define _FILES_H_INCLUDED_
 
-#include "..\config.h"
+#include "../Config.h"
 
 BOOL ReadLocFile(const CString &fileName, CList<CPoi *, CPoi *> &pois);
 BOOL ReadGpxFile(const CString &fileName, CList<CPoi *, CPoi *> &pois);

@@ -18,7 +18,7 @@
  *
  */
 
-#include "stdafx.h"
+#include "StdAfx.h"
 #include "Config.h"
 #include "../share/defs.h"
 #include "../share/regs.h"

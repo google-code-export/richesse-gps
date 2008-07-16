@@ -22,7 +22,7 @@
 #include <windows.h>
 #include <afxwin.h>
 #include "helpers.h"
-#include "..\richessegps\config.h"	
+#include "../richesseGPS/Config.h"	
 
 CString FormatSysError(DWORD errCode) {
 	TCHAR errMsg[1024];

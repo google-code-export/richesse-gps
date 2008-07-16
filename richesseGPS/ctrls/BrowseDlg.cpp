@@ -18,9 +18,9 @@
  *
  */
 
-#include "../stdafx.h"
-#include "../richessegps.h"
-#include "browsedlg.h"
+#include "../StdAfx.h"
+#include "../RichesseGPS.h"
+#include "BrowseDlg.h"
 //#include "Session.h"
 #include "../../share/helpers.h"
 

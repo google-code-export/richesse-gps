@@ -25,7 +25,7 @@
 #pragma once
 #endif // _MSC_VER > 1000
 
-#include "..\gps\gps.h"
+#include "../gps/gps.h"
 
 /////////////////////////////////////////////////////////////////////////////
 // CSatellitesCtrl window

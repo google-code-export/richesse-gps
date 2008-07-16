@@ -27,7 +27,7 @@
 #define STATE_CANNOT_OPEN				3
 #define STATE_CANNOT_INIT				4
 
-#include "..\misc\suspendkiller.h"
+#include "../misc/SuspendKiller.h"
 
 #define MAX_SATELLITES					12
 

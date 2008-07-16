@@ -21,8 +21,8 @@
 #ifndef _BINFILE_H_INCLUDED_
 #define _BINFILE_H_INCLUDED_
 
-#include "..\..\share\file.h"
-#include "..\..\share\helpers.h"
+#include "../../share/file.h"
+#include "../../share/helpers.h"
 
 struct CArchiveFileChunkHeader {
 	char Id[4];

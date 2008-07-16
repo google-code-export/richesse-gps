@@ -18,9 +18,9 @@
  *
  */
 
-#include "..\stdafx.h"
-#include "..\RichesseGPS.h"
-#include "satellitesctrl.h"
+#include "../StdAfx.h"
+#include "../RichesseGPS.h"
+#include "SatellitesCtrl.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW

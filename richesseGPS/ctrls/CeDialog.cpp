@@ -18,9 +18,9 @@
  *
  */
 
-#include "..\stdafx.h"
+#include "../StdAfx.h"
 #include "CeDialog.h"
-#include "..\..\share\helpers.h"
+#include "../../share/helpers.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
