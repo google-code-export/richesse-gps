@@ -1,0 +1,18 @@
+#summary How to install RichesseGPS
+#labels Featured
+
+=Installing=
+
+==Installing Zipped CAB File==
+
+  # Before installing, make sure that your device meets [SystemRequirements system requirements].
+  # Download and unzip *RichesseGPS*.
+  # Upload unzipped *cab file* to your PocketPC.
+  # Tap the *cab file* on your PocketPC to install.
+
+
+=Uninstalling=
+
+  # Tap *Start | Settings*, select *System* tab and tap *Remove programs*.
+  # Find *RichesseGPS* in the program list.
+  # Tap *Remove*.
