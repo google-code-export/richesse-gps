@@ -126,6 +126,9 @@ protected:
 	afx_msg void OnCopyLongitude();
 	afx_msg void OnCopyLatitude();
 
+	afx_msg void OnDownloadInfo();
+	afx_msg void OnMarkAs(UINT nID);
+
 	DECLARE_MESSAGE_MAP()
 };
 

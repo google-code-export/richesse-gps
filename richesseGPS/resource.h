@@ -23,6 +23,7 @@
 #define IDR_POI_MAN_CTX                 139
 #define IDD_DOWNLOAD                    139
 #define IDB_POI_STATUS_HI               140
+#define IDR_WAYPOINT_CTX                140
 #define IDB_POI_STATUS                  141
 #define IDR_IMPORT                      142
 #define IDR_EXPORT                      143
