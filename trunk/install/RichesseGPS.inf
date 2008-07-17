@@ -52,12 +52,12 @@
 [DefaultInstall.ARM]
 	CEShortcuts  = Shortcuts
 	CESetupDLL   = "setup.dll"
-	CopyFiles    = Files.ARM,Libs.ARM
+	CopyFiles    = Files.ARM
 ;	AddReg       = AddRegSection.ARM
 
 [Files.ARM]
-	RichesseGPS.exe,,,0x40000000
-	libexpat.dll,,,0x40000000
-	COPYING,,,0x40000000
+	RichesseGPS.exe,,,0x80000000
+	libexpat.dll,,,0x80000000
+	COPYING,,,0x80000000
 	.pois,,,0x00000010
 
