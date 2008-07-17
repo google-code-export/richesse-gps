@@ -27,7 +27,6 @@
 [DestinationDirs]
 	Shortcuts                      = ,%CE11%
 	Files.ARM                      = ,%InstallDir%
-	Libs.ARM                       = ,%InstallDir%
 
 ;
 ; ARM
@@ -57,10 +56,8 @@
 ;	AddReg       = AddRegSection.ARM
 
 [Files.ARM]
-	RichesseGPS.exe,,,0x80000000
-	COPYING,,,0x80000000
+	RichesseGPS.exe,,,0x40000000
+	libexpat.dll,,,0x40000000
+	COPYING,,,0x40000000
 	.pois,,,0x00000010
-
-[Libs.ARM]
-	libexpat.dll,,,0x80000000
 

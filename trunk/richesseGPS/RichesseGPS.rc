@@ -98,7 +98,6 @@ BEGIN
         BEGIN
             MENUITEM "Completed",                   ID_POI_MARKAS_COMPLETED
             MENUITEM "Not Completed",               ID_POI_MARKAS_NOTCOMPLETED
-
             MENUITEM "Not found",                   ID_POI_MARKAS_NOTFOUND
         END
         POPUP "Sort by"
@@ -143,7 +142,6 @@ BEGIN
         BEGIN
             MENUITEM "Completed",                   ID_POI_MARKAS_COMPLETED
             MENUITEM "Not Completed",               ID_POI_MARKAS_NOTCOMPLETED
-
             MENUITEM "Not found",                   ID_POI_MARKAS_NOTFOUND
         END
         MENUITEM SEPARATOR
@@ -153,6 +151,21 @@ BEGIN
             MENUITEM "KML",                         ID_MENU_EXPORT_KML
             MENUITEM "RichesseGPS",                 ID_MENU_EXPORT
         END
+    END
+END
+
+IDR_WAYPOINT_CTX MENU DISCARDABLE
+BEGIN
+    POPUP "POI"
+    BEGIN
+        MENUITEM SEPARATOR
+        POPUP "Mark as"
+        BEGIN
+            MENUITEM "Completed",                   ID_POI_MARKAS_COMPLETED
+            MENUITEM "Not Completed",               ID_POI_MARKAS_NOTCOMPLETED
+            MENUITEM "Not found",                   ID_POI_MARKAS_NOTFOUND
+        END
+        MENUITEM "Download Info",                   ID_MENU_DOWNLOADINFO
     END
 END
 

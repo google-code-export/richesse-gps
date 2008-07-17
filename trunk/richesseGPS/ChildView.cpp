@@ -25,6 +25,7 @@
 
 #include "AddWaypointDlg.h"
 #include "WaypointNotes.h"
+#include "DownloadManagerDlg.h"
 
 #include "../share/file.h"
 
@@ -66,6 +67,9 @@ BEGIN_MESSAGE_MAP(CChildView, CWnd)
 	ON_COMMAND(ID_COPY_WAYPOINT, OnCopyWaypoint)
 	ON_COMMAND(ID_COPY_LONGITUDE, OnCopyLongitude)
 	ON_COMMAND(ID_COPY_LATITUDE, OnCopyLatitude)
+
+	ON_COMMAND_RANGE(ID_POI_MARKAS_NOTCOMPLETED, ID_POI_MARKAS_NOTFOUND, OnMarkAs)
+	ON_COMMAND(ID_MENU_DOWNLOADINFO, OnDownloadInfo)
 END_MESSAGE_MAP()
 
 
@@ -502,14 +506,16 @@ void CChildView::OnWaypointCtx(NMHDR *pNMHDR, LRESULT *pResult) {
 	PNMRGINFO pInfo = (PNMRGINFO) pNMHDR;
 
 	if (theApp.Destination != NULL) {
-		CMenu popup;
+		CMenu mnu;
+		mnu.LoadMenu(IDR_WAYPOINT_CTX);
+		
+		CMenu *popup = mnu.GetSubMenu(0);
+		
 		CString s;
-
-		popup.CreatePopupMenu();
 		s.Format(IDS_COPY_STR, theApp.Destination->Id);
-		popup.AppendMenu(MF_STRING, ID_COPY_WAYPOINT, s);
+		popup->InsertMenu(0, MF_STRING, ID_COPY_WAYPOINT, s);
 
-		popup.TrackPopupMenu(TPM_LEFTALIGN, pInfo->ptAction.x, pInfo->ptAction.y, this);
+		popup->TrackPopupMenu(TPM_LEFTALIGN, pInfo->ptAction.x, pInfo->ptAction.y, this);
 	}
 
 	*pResult = TRUE; // This is important!
@@ -553,4 +559,33 @@ void CChildView::OnCopyLatitude() {
 	CString s;
 	s.Format(_T("%.6lf"), theApp.Gps.Latitude);
 	CopyTextToClipboard(GetSafeHwnd(), s);
+}
+
+void CChildView::OnDownloadInfo() {
+	CDownloadManagerDlg dlg;
+
+	if (theApp.Destination != NULL) {
+		dlg.Pois.AddTail(theApp.Destination);
+		dlg.DoModal();
+	}
+}
+
+void CChildView::OnMarkAs(UINT nID) {
+	if (theApp.Destination != NULL) {
+		CPoi *poi = theApp.Destination;
+		switch (nID) {
+			case ID_POI_MARKAS_NOTCOMPLETED:
+				poi->Status = CPoi::NotCompleted;
+				break;
+				
+			case ID_POI_MARKAS_NOTFOUND:
+				poi->Status = CPoi::NotFound;
+				break;
+			
+			case ID_POI_MARKAS_COMPLETED:
+				poi->Status = CPoi::Completed;
+				GetLocalTime(&(poi->TimeCompleted));
+				break;
+		}
+	}
 }

@@ -79,8 +79,8 @@ BOOL CDownloadManagerDlg::OnInitDialog() {
 
 	m_ctlItems.SetExtendedStyle(LVS_EX_FULLROWSELECT);
 
-	m_ctlItems.InsertColumn(0, _T("Item"), LVCFMT_LEFT, rc.Width() - SCALEX(50));
-	m_ctlItems.InsertColumn(1, _T("Status"), LVCFMT_LEFT, SCALEX(50));
+	m_ctlItems.InsertColumn(0, _T("Item"), LVCFMT_LEFT, rc.Width() - SCALEX(60));
+	m_ctlItems.InsertColumn(1, _T("Status"), LVCFMT_LEFT, SCALEX(60));
 
 	// insert items
 	int i = 0;
