@@ -1,4 +1,17 @@
 #summary Screenshots of RichesseGPS
 #labels Featured
 
+= Version 2.0 =
+http://richesse-gps.googlecode.com/svn/wiki/screenshots/rgps-2.0-compass.gif
+http://richesse-gps.googlecode.com/svn/wiki/screenshots/rgps-2.0-notes.gif
+
+http://richesse-gps.googlecode.com/svn/wiki/screenshots/rgps-2.0-info-1.gif
+http://richesse-gps.googlecode.com/svn/wiki/screenshots/rgps-2.0-info-2.gif
+
+http://richesse-gps.googlecode.com/svn/wiki/screenshots/rgps-2.0-poiman.gif
+http://richesse-gps.googlecode.com/svn/wiki/screenshots/rgps-2.0-waypoint.gif
+
+http://richesse-gps.googlecode.com/svn/wiki/screenshots/rgps-2.0-downloadman.gif
+
+= Version 1.0.4 =
 http://pda.jasnapaka.com/richessegps/screenshots/1.0.4/main.png
