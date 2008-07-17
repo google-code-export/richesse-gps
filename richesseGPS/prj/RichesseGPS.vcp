@@ -101,6 +101,23 @@ LINK32=link.exe
 # PROP Default_Filter "cpp;c;cxx;rc;def;r;odl;idl;hpj;bat"
 # Begin Source File
 
+SOURCE=..\AboutPg.cpp
+DEP_CPP_ABOUT=\
+	"..\..\share\defs.h"\
+	"..\..\share\shguim.h"\
+	"..\..\share\UIHelper.h"\
+	"..\AboutPg.h"\
+	"..\Config.h"\
+	"..\ctrls\CePropertyPage.h"\
+	"..\ctrls\LinkCtrl.h"\
+	"..\gps\gps.h"\
+	"..\misc\SuspendKiller.h"\
+	"..\RichesseGPS.h"\
+	"..\StdAfx.h"\
+	
+# End Source File
+# Begin Source File
+
 SOURCE=..\AddWaypointDlg.cpp
 DEP_CPP_ADDWA=\
 	"..\..\share\defs.h"\
@@ -130,12 +147,14 @@ DEP_CPP_CHILD=\
 	"..\ChildView.h"\
 	"..\Config.h"\
 	"..\ctrls\Caption.h"\
+	"..\ctrls\CeDialog.h"\
 	"..\ctrls\CeEdit.h"\
 	"..\ctrls\CePropertySheet.h"\
 	"..\ctrls\CeStatic.h"\
 	"..\ctrls\CompassCtrl.h"\
 	"..\ctrls\HtmlCtrl.h"\
 	"..\ctrls\SatellitesCtrl.h"\
+	"..\DownloadManagerDlg.h"\
 	"..\gps\gps.h"\
 	"..\misc\SuspendKiller.h"\
 	"..\RichesseGPS.h"\
@@ -184,6 +203,22 @@ DEP_CPP_GPSIN=\
 	"..\ctrls\SatellitesCtrl.h"\
 	"..\gps\gps.h"\
 	"..\GPSInfoPg.h"\
+	"..\misc\SuspendKiller.h"\
+	"..\RichesseGPS.h"\
+	"..\StdAfx.h"\
+	
+# End Source File
+# Begin Source File
+
+SOURCE=..\LicensePg.cpp
+DEP_CPP_LICEN=\
+	"..\..\share\defs.h"\
+	"..\..\share\shguim.h"\
+	"..\..\share\UIHelper.h"\
+	"..\Config.h"\
+	"..\ctrls\CePropertyPage.h"\
+	"..\gps\gps.h"\
+	"..\LicensePg.h"\
 	"..\misc\SuspendKiller.h"\
 	"..\RichesseGPS.h"\
 	"..\StdAfx.h"\
@@ -273,11 +308,13 @@ DEP_CPP_RICHE=\
 	"..\..\share\defs.h"\
 	"..\..\share\shguim.h"\
 	"..\..\share\UIHelper.h"\
+	"..\AboutPg.h"\
 	"..\ChildView.h"\
 	"..\Config.h"\
 	"..\ctrls\Caption.h"\
-	"..\ctrls\CeDialog.h"\
 	"..\ctrls\CeEdit.h"\
+	"..\ctrls\CePropertyPage.h"\
+	"..\ctrls\CePropertySheet.h"\
 	"..\ctrls\CeStatic.h"\
 	"..\ctrls\CompassCtrl.h"\
 	"..\ctrls\HtmlCtrl.h"\
@@ -285,6 +322,7 @@ DEP_CPP_RICHE=\
 	"..\ctrls\SatellitesCtrl.h"\
 	"..\files\files.h"\
 	"..\gps\gps.h"\
+	"..\LicensePg.h"\
 	"..\MainFrm.h"\
 	"..\misc\SuspendKiller.h"\
 	"..\RichesseGPS.h"\
@@ -360,6 +398,10 @@ DEP_CPP_WAYPO=\
 # PROP Default_Filter "h;hpp;hxx;hm;inl"
 # Begin Source File
 
+SOURCE=..\AboutPg.h
+# End Source File
+# Begin Source File
+
 SOURCE=..\AddWaypointDlg.h
 # End Source File
 # Begin Source File
@@ -377,6 +419,10 @@ SOURCE=..\DownloadManagerDlg.h
 # Begin Source File
 
 SOURCE=..\GPSInfoPg.h
+# End Source File
+# Begin Source File
+
+SOURCE=..\LicensePg.h
 # End Source File
 # Begin Source File
 
@@ -813,6 +859,8 @@ DEP_CPP_GPX_C=\
 
 SOURCE=..\files\loc.cpp
 DEP_CPP_LOC_C=\
+	"..\..\libexpat\expat.h"\
+	"..\..\libexpat\expat_external.h"\
 	"..\..\share\defs.h"\
 	"..\..\share\file.h"\
 	"..\..\share\helpers.h"\
@@ -824,9 +872,6 @@ DEP_CPP_LOC_C=\
 	"..\misc\SuspendKiller.h"\
 	"..\RichesseGPS.h"\
 	"..\StdAfx.h"\
-	
-NODEP_CPP_LOC_C=\
-	"..\..\libexpat\expat.h"\
 	
 # SUBTRACT CPP /YX /Yc /Yu
 # End Source File
