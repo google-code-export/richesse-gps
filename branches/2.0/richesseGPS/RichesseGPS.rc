@@ -1,0 +1,864 @@
+//Microsoft eMbedded Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+#include "newres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// Czech resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CSY)
+#ifdef _WIN32
+LANGUAGE LANG_CZECH, SUBLANG_DEFAULT
+#pragma code_page(1250)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "#include ""newres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)\r\n"
+    "#ifdef _WIN32\r\n"
+    "LANGUAGE 9, 1\r\n"
+    "#pragma code_page(1252)\r\n"
+    "#endif //_WIN32\r\n"
+    "#include ""res\\RichesseGPS.rc2""  // non-Microsoft eMbedded Visual C++ edited resources\r\n"
+    "#include ""afxres.rc""         // Standard components\r\n"
+    "#include ""wceres.rc""         // WCE-specific components\r\n"
+    "#endif\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// CEUX
+//
+
+HI_RES_AWARE CEUX DISCARDABLE 
+BEGIN
+    0x0001
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menubar
+//
+
+IDR_CANCEL MENU DISCARDABLE 
+BEGIN
+    MENUITEM "Cancel",                      IDCANCEL
+END
+
+IDR_POI_MAN MENU DISCARDABLE 
+BEGIN
+    MENUITEM "Navigate",                    ID_NAVIGATE
+    POPUP "Menu"
+    BEGIN
+        MENUITEM "Add POI...",                  ID_MENU_ADDPOI
+        MENUITEM "Edit...",                     ID_MENU_EDIT
+        MENUITEM "Download Info",               ID_MENU_DOWNLOADINFO
+        MENUITEM "Delete",                      ID_MENU_DELETE
+        MENUITEM "Select All",                  ID_POI_SELECTALL
+        MENUITEM SEPARATOR
+        POPUP "Mark as"
+        BEGIN
+            MENUITEM "Completed",                   ID_POI_MARKAS_COMPLETED
+            MENUITEM "Not Completed",               ID_POI_MARKAS_NOTCOMPLETED
+            MENUITEM "Not found",                   ID_POI_MARKAS_NOTFOUND
+        END
+        POPUP "Sort by"
+        BEGIN
+            MENUITEM "Name",                        ID_POI_SORTBY_NAME
+            MENUITEM "Status",                      ID_POI_SORTBY_STATUS
+            MENUITEM "Cache Type",                  ID_POI_SORTBY_CACHETYPE
+            MENUITEM SEPARATOR
+            MENUITEM "Ascending",                   ID_POI_SORTBY_ASCENDING
+            MENUITEM "Descending",                  ID_POI_SORTBY_DESCENDING
+        END
+        MENUITEM SEPARATOR
+        MENUITEM "Import...",                   ID_MENU_IMPORT
+        POPUP "Export to"
+        BEGIN
+            MENUITEM "KML",                         ID_MENU_EXPORT_KML
+            MENUITEM "RichesseGPS",                 ID_MENU_EXPORT
+        END
+        MENUITEM SEPARATOR
+        MENUITEM "Close",                       IDCANCEL
+    END
+END
+
+IDR_POI_MAN_CTX MENU DISCARDABLE 
+BEGIN
+    POPUP "POI"
+    BEGIN
+        MENUITEM "Edit...",                     ID_MENU_EDIT
+        MENUITEM "Delete",                      ID_MENU_DELETE
+        MENUITEM "Download Info",               ID_MENU_DOWNLOADINFO
+        MENUITEM SEPARATOR
+        POPUP "Sort by"
+        BEGIN
+            MENUITEM "Name",                        ID_POI_SORTBY_NAME
+            MENUITEM "Status",                      ID_POI_SORTBY_STATUS
+            MENUITEM "Cache Type",                  ID_POI_SORTBY_CACHETYPE
+            MENUITEM SEPARATOR
+            MENUITEM "Ascending",                   ID_POI_SORTBY_ASCENDING
+            MENUITEM "Descending",                  ID_POI_SORTBY_DESCENDING
+        END
+        POPUP "Mark as"
+        BEGIN
+            MENUITEM "Completed",                   ID_POI_MARKAS_COMPLETED
+            MENUITEM "Not Completed",               ID_POI_MARKAS_NOTCOMPLETED
+            MENUITEM "Not found",                   ID_POI_MARKAS_NOTFOUND
+        END
+        MENUITEM SEPARATOR
+        MENUITEM "Select All",                  ID_POI_SELECTALL
+        POPUP "Export to"
+        BEGIN
+            MENUITEM "KML",                         ID_MENU_EXPORT_KML
+            MENUITEM "RichesseGPS",                 ID_MENU_EXPORT
+        END
+    END
+END
+
+IDR_WAYPOINT_CTX MENU DISCARDABLE
+BEGIN
+    POPUP "POI"
+    BEGIN
+        MENUITEM SEPARATOR
+        POPUP "Mark as"
+        BEGIN
+            MENUITEM "Completed",                   ID_POI_MARKAS_COMPLETED
+            MENUITEM "Not Completed",               ID_POI_MARKAS_NOTCOMPLETED
+            MENUITEM "Not found",                   ID_POI_MARKAS_NOTFOUND
+        END
+        MENUITEM "Download Info",                   ID_MENU_DOWNLOADINFO
+    END
+END
+
+IDR_IMPORT MENU DISCARDABLE 
+BEGIN
+    MENUITEM "Import",                      ID_IMPORT
+    MENUITEM "Cancel",                      IDCANCEL
+END
+
+IDR_EXPORT MENU DISCARDABLE 
+BEGIN
+    MENUITEM "Export",                      ID_EXPORT
+    MENUITEM "Cancel",                      IDCANCEL
+END
+
+IDR_INFO MENU DISCARDABLE 
+BEGIN
+    MENUITEM "Save",                        ID_SAVE
+    MENUITEM "Cancel",                      IDCANCEL
+END
+
+IDR_ADD MENU DISCARDABLE 
+BEGIN
+    MENUITEM "Add",                         ID_ADD
+    MENUITEM "Cancel",                      IDCANCEL
+END
+
+IDR_RADAR MENU DISCARDABLE 
+BEGIN
+    MENUITEM "Navigate",                    ID_NAVIGATE
+    MENUITEM "Close",                       IDCANCEL
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Data
+//
+
+IDR_CANCEL SHMENUBAR DISCARDABLE 
+BEGIN
+    IDR_CANCEL, 1,
+    I_IMAGENONE, IDCANCEL, TBSTATE_ENABLED, TBSTYLE_AUTOSIZE, IDS_CAP_CANCEL, 
+    0, NOMENU,
+END
+
+IDR_POI_MAN SHMENUBAR DISCARDABLE 
+BEGIN
+    IDR_POI_MAN, 2,
+    I_IMAGENONE, ID_NAVIGATE, TBSTATE_ENABLED, TBSTYLE_AUTOSIZE, 
+    IDS_CAP_NAVIGATE, 0, NOMENU,
+    I_IMAGENONE, ID_MENU, TBSTATE_ENABLED, 
+    TBSTYLE_DROPDOWN | TBSTYLE_AUTOSIZE, IDS_CAP_MENU, 0, 1,
+END
+
+IDR_POI_MAN_CTX SHMENUBAR DISCARDABLE 
+BEGIN
+    IDR_POI_MAN_CTX, 1,
+    I_IMAGENONE, ID_POI, TBSTATE_ENABLED, 
+    TBSTYLE_DROPDOWN | TBSTYLE_AUTOSIZE, IDS_CAP_POI, 0, 0,
+END
+
+IDR_IMPORT SHMENUBAR DISCARDABLE 
+BEGIN
+    IDR_IMPORT, 2,
+    I_IMAGENONE, ID_IMPORT, TBSTATE_ENABLED, TBSTYLE_AUTOSIZE, 
+    IDS_CAP_IMPORT, 0, NOMENU,
+    I_IMAGENONE, IDCANCEL, TBSTATE_ENABLED, TBSTYLE_AUTOSIZE, IDS_CAP_CANCEL, 
+    0, NOMENU,
+END
+
+IDR_EXPORT SHMENUBAR DISCARDABLE 
+BEGIN
+    IDR_EXPORT, 2,
+    I_IMAGENONE, ID_EXPORT, TBSTATE_ENABLED, TBSTYLE_AUTOSIZE, 
+    IDS_CAP_EXPORT, 0, NOMENU,
+    I_IMAGENONE, IDCANCEL, TBSTATE_ENABLED, TBSTYLE_AUTOSIZE, IDS_CAP_CANCEL, 
+    0, NOMENU,
+END
+
+IDR_INFO SHMENUBAR DISCARDABLE 
+BEGIN
+    IDR_INFO, 2,
+    I_IMAGENONE, ID_SAVE, TBSTATE_ENABLED, TBSTYLE_AUTOSIZE, IDS_CAP_SAVE, 0, 
+    NOMENU,
+    I_IMAGENONE, IDCANCEL, TBSTATE_ENABLED, TBSTYLE_AUTOSIZE, IDS_CAP_CANCEL, 
+    0, NOMENU,
+END
+
+IDR_ADD SHMENUBAR DISCARDABLE 
+BEGIN
+    IDR_ADD, 2,
+    I_IMAGENONE, ID_ADD, TBSTATE_ENABLED, TBSTYLE_AUTOSIZE, IDS_CAP_ADD, 0, 
+    NOMENU,
+    I_IMAGENONE, IDCANCEL, TBSTATE_ENABLED, TBSTYLE_AUTOSIZE, IDS_CAP_CANCEL, 
+    0, NOMENU,
+END
+
+IDR_RADAR SHMENUBAR DISCARDABLE 
+BEGIN
+    IDR_RADAR, 2,
+    I_IMAGENONE, ID_NAVIGATE, TBSTATE_ENABLED, TBSTYLE_AUTOSIZE, 
+    IDS_CAP_NAVIGATE, 0, NOMENU,
+    I_IMAGENONE, IDCANCEL, TBSTATE_ENABLED, TBSTYLE_AUTOSIZE, IDS_CAP_CLOSE, 
+    0, NOMENU,
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDB_DIRS_HI             BITMAP  DISCARDABLE     "res\\dirs_hi.bmp"
+IDB_CACHE               BITMAP  DISCARDABLE     "res\\cache.bmp"
+IDB_CACHE_HI            BITMAP  DISCARDABLE     "res\\cache_hi.bmp"
+IDB_DIRS                BITMAP  DISCARDABLE     "res\\dirs.bmp"
+IDB_POI_STATUS_HI       BITMAP  DISCARDABLE     "res\\poi_stat_hi.bmp"
+IDB_POI_STATUS          BITMAP  DISCARDABLE     "res\\poi_stat.bmp"
+IDB_BTN_ADD_HI          BITMAP  DISCARDABLE     "res\\btnadd_hi.bmp"
+IDB_BTN_ADD             BITMAP  DISCARDABLE     "res\\btnadd.bmp"
+IDB_BTN_NOTES           BITMAP  DISCARDABLE     "res\\btnnotes.bmp"
+IDB_BTN_NOTES_HI        BITMAP  DISCARDABLE     "res\\btnnotes_hi.bmp"
+IDB_BTN_COMPASS         BITMAP  DISCARDABLE     "res\\btncompass.bmp"
+IDB_BTN_COMPASS_HI      BITMAP  DISCARDABLE     "res\\btncompass_hi.bmp"
+IDB_BTN_INFO_HI         BITMAP  DISCARDABLE     "res\\btninfo_hi.bmp"
+IDB_BTN_INFO            BITMAP  DISCARDABLE     "res\\btninfo.bmp"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_POI_MAN DIALOG DISCARDABLE  0, 0, 160, 180
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "POI Manager"
+FONT 8, "Tahoma"
+BEGIN
+    CONTROL         "List1",IDC_POIS,"SysListView32",LVS_REPORT | 
+                    LVS_SHOWSELALWAYS | LVS_OWNERDRAWFIXED | WS_TABSTOP,4,4,
+                    152,154
+END
+
+IDD_RADAR DIALOG DISCARDABLE  0, 0, 160, 180
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Radar"
+FONT 8, "Tahoma"
+BEGIN
+    CONTROL         "List1",IDC_POIS,"SysListView32",LVS_REPORT | 
+                    LVS_SHOWSELALWAYS | LVS_OWNERDRAWFIXED | WS_TABSTOP,4,4,
+                    152,154
+END
+
+IDD_DOWNLOAD DIALOG DISCARDABLE  0, 0, 160, 180
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Download Manager"
+FONT 8, "Tahoma"
+BEGIN
+    CONTROL         "List1",IDC_ITEMS,"SysListView32",LVS_REPORT | 
+                    LVS_SHOWSELALWAYS | LVS_NOSORTHEADER | WS_TABSTOP,4,4,
+                    152,135
+    CONTROL         "Progress1",IDC_PROGRESS,"msctls_progress32",PBS_SMOOTH | 
+                    WS_BORDER,4,139,152,14
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    IDD_POI_MAN, DIALOG
+    BEGIN
+        LEFTMARGIN, 4
+        RIGHTMARGIN, 156
+        TOPMARGIN, 4
+        BOTTOMMARGIN, 176
+    END
+
+    IDD_RADAR, DIALOG
+    BEGIN
+        LEFTMARGIN, 4
+        RIGHTMARGIN, 156
+        TOPMARGIN, 4
+        BOTTOMMARGIN, 176
+    END
+
+    IDD_DOWNLOAD, DIALOG
+    BEGIN
+        LEFTMARGIN, 4
+        RIGHTMARGIN, 156
+        TOPMARGIN, 4
+        BOTTOMMARGIN, 176
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_CAP_CANCEL          "Cancel"
+    IDS_CAP_MENUITEM32780   "N"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_NOT_FILE            "Selected item is not a file."
+    IDS_LOCATION_NOT_DIR    "The selected location is not a folder."
+    IDS_DIRECTORY_NOT_CREATED "Directory was not created."
+    IDS_NO_ITEMS_TO_DISPLAY "No items to display"
+    IDS_OPTIONS             "Options"
+    IDS_METRIC              "Metric"
+    IDS_ENGLISH             "English"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_GPS_INFO            "GPS Information"
+    IDS_SATELLITES          "%d used, %d in view"
+    IDS_RUNNING             "Running"
+    IDS_UNKNOWN             "Unknown"
+    IDS_NOT_RUNNING         "Not running"
+    IDS_GPS_ON              "GPS On"
+    IDS_GPS_OFF             "GPS Off"
+    IDS_GPS_CONNECT_FAILED  "Connection to GPS failed."
+    IDS_FILE_TO_IMPORT      "Select File To Import"
+    IDS_SELECT_LOCATION     "Select Location"
+    IDS_NAME                "Name"
+    IDS_IMPORT_FAILED       "Import failed."
+    IDS_EXPORT_UNSUCCESSFUL "Export failed."
+    IDS_WAYPOINT_INFO_ID    "Waypoint Info (%s)"
+    IDS_WAYPOINT_INFO       "Waypoint Info"
+    IDS_ARE_YOU_SERIOUS     "Are you serious?"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_CAP_NAVIGATE        "Navigate"
+    IDS_CAP_MENU            "Menu"
+    IDS_CAP_POI             "POI"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_CAP_IMPORT          "Import"
+    IDS_CAP_EXPORT          "Export"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_CAP_SAVE            "Save"
+    IDS_CAP_ADD             "Add"
+    IDS_CAP_CLOSE           "Close"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_OVERWRITE_FILE      "File '%s' already exists. Overwrite?"
+    IDS_CANNOT_CREATE_FILE_EXPORT "Can not create a file for exporting"
+    IDS_EXPORT_SUCCESSFUL   "Export successful."
+    IDS_TRADITIONAL         "Traditional"
+    IDS_MULTICACHE          "Multi-cache"
+    IDS_LETTERBOX           "Letterbox"
+    IDS_EARTHCACHE          "Earth cache"
+    IDS_EVENTCACHE          "Event cache"
+    IDS_MYSTERYCACHE        "Mystery cache"
+    IDS_MY_POI              "My POI"
+    IDS_ADD_WAYPOINT        "Add Waypoint"
+    IDS_DISTANCE            "Distance"
+    IDS_COPY_STR            "Copy %s"
+    IDS_NO_WAYPOINT_SELECTED "No waypoint selected"
+    IDS_VIRTUAL             "Virtual"
+    IDS_ABOUT               "About"
+END
+
+#endif    // Czech resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menubar
+//
+
+IDR_MAINFRAME MENU PRELOAD DISCARDABLE 
+BEGIN
+    MENUITEM "GPS On",                      ID_GPS_ON
+    POPUP "Menu"
+    BEGIN
+        MENUITEM "POI Manager...",              ID_MENU_POIMANAGER
+        MENUITEM "Radar...",                    ID_MENU_RADAR
+        MENUITEM "GPS Info...",                 ID_MENU_GPSINFO
+        MENUITEM "Options...",                  ID_MENU_OPTIONS
+        MENUITEM SEPARATOR
+        MENUITEM "About...",                    ID_APP_ABOUT
+        MENUITEM "Exit",                        ID_APP_EXIT
+    END
+END
+
+IDR_EDIT MENU DISCARDABLE 
+BEGIN
+    POPUP "Edit"
+    BEGIN
+        MENUITEM "Cut",                         ID_EDIT_CUT
+        MENUITEM "Copy",                        ID_EDIT_COPY
+        MENUITEM "Paste",                       ID_EDIT_PASTE
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ABOUTBOX DIALOG DISCARDABLE  0, 0, 160, 190
+STYLE DS_MODALFRAME | WS_CHILD | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_APPWINDOW | 0x80000000L
+CAPTION "About RichesseGPS"
+FONT 8, "Tahoma"
+BEGIN
+    ICON            IDR_MAINFRAME,IDC_STATIC,135,5,21,20
+    LTEXT           "RichesseGPS 2.0",IDC_STATIC,5,8,115,10
+    LTEXT           "Copyright (c) 2008",IDC_STATIC,5,23,115,10
+    LTEXT           "David Andrs",IDC_STATIC,5,33,115,10
+    RTEXT           "http://pda.jasnapaka.com/tman/",IDC_HOMEPAGE_LINK,5,124,
+                    151,10,SS_NOTIFY
+END
+
+IDD_LICENSE DIALOGEX 0, 0, 160, 165
+STYLE DS_MODALFRAME | WS_CHILD | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_APPWINDOW | 0x80000000L
+CAPTION "License"
+FONT 8, "Tahoma"
+BEGIN
+    EDITTEXT        IDC_LICENSE,5,5,150,129,ES_MULTILINE | ES_AUTOVSCROLL | 
+                    ES_AUTOHSCROLL | NOT WS_BORDER | WS_VSCROLL | WS_HSCROLL | 
+                    NOT WS_TABSTOP
+END
+
+IDD_BROWSE DIALOG DISCARDABLE  0, 0, 160, 190
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Browse"
+FONT 8, "Tahoma"
+BEGIN
+    EDITTEXT        IDC_PATH,4,18,152,12,ES_AUTOHSCROLL | WS_DISABLED | NOT 
+                    WS_TABSTOP
+    CONTROL         "Tree1",IDC_DIRS,"SysTreeView32",TVS_HASBUTTONS | 
+                    TVS_HASLINES | TVS_DISABLEDRAGDROP | TVS_SHOWSELALWAYS | 
+                    WS_BORDER | WS_TABSTOP,4,32,152,130
+END
+
+IDD_SETUP_GENERAL DIALOG DISCARDABLE  0, 0, 160, 165
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_APPWINDOW | 0x80000000L
+CAPTION "General"
+FONT 8, "Tahoma"
+BEGIN
+    LTEXT           "Format",IDC_C_COORDS,4,4,152,10
+    LTEXT           "Coordinates:",IDC_STATIC,17,19,42,8
+    COMBOBOX        IDC_COORDS,65,17,71,59,CBS_DROPDOWNLIST | WS_VSCROLL | 
+                    WS_TABSTOP
+    LTEXT           "Units:",IDC_STATIC,17,35,20,8,WS_DISABLED
+    COMBOBOX        IDC_UNITS,65,33,71,45,CBS_DROPDOWNLIST | CBS_SORT | 
+                    WS_DISABLED | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Suspend Mode",IDC_C_SUSPEND_MODE,4,53,152,10
+    CONTROL         "Prevent suspend mode",IDC_PREVENT_SUSPEND,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,17,67,139,10
+END
+
+IDD_SETUP_GPS DIALOG DISCARDABLE  0, 0, 160, 165
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_APPWINDOW | 0x80000000L
+CAPTION "GPS"
+FONT 8, "Tahoma"
+BEGIN
+    LTEXT           "GPS Connection",IDC_C_GPS_CONN,4,4,152,10
+    LTEXT           "Port:",-1,17,21,21,8
+    COMBOBOX        IDC_PORT,60,19,59,84,CBS_DROPDOWNLIST | WS_VSCROLL | 
+                    WS_TABSTOP
+    LTEXT           "Baud-rate:",-1,17,36,36,8
+    COMBOBOX        IDC_BAUD_RATE,60,34,59,84,CBS_DROPDOWN | WS_VSCROLL | 
+                    WS_TABSTOP
+    CONTROL         "Autoconnect on startup",IDC_AUTO_CONNECT,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,17,55,139,10
+    CONTROL         "Reconnect after connection lost",IDC_RECONNECT,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,17,66,139,10
+    PUSHBUTTON      "Autodetect",IDC_AUTODETECT,106,106,50,13,NOT WS_VISIBLE
+END
+
+IDD_INFO DIALOG DISCARDABLE  0, 0, 160, 165
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_APPWINDOW | 0x80000000L
+CAPTION "Info"
+FONT 8, "Tahoma"
+BEGIN
+    LTEXT           "Position",IDC_C_POSITION,7,3,149,10
+    LTEXT           "Latitude:",IDC_STATIC,7,16,30,9
+    LTEXT           "Static",IDC_LATITUDE,50,16,106,9
+    LTEXT           "Longitude:",IDC_STATIC,7,26,35,9
+    LTEXT           "Static",IDC_LONGITUDE,50,26,106,9
+    LTEXT           "Altitude:",IDC_STATIC,7,36,28,9
+    LTEXT           "Static",IDC_ALTITUDE,50,36,106,9
+    LTEXT           "Satellites:",IDC_STATIC,7,115,32,9
+    LTEXT           "3 used, 9 in view",IDC_SAT_CNT,50,115,106,9
+    LTEXT           "Satellites",IDC_C_SATELLITES,7,55,149,10
+    LTEXT           "Status:",IDC_STATIC,7,125,24,9
+    LTEXT           "Static",IDC_STATUS,50,125,106,9
+    LTEXT           "Satellites",IDC_SATELLITES,7,68,149,44
+END
+
+IDD_ADD DIALOG DISCARDABLE  0, 0, 160, 165
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_APPWINDOW | 0x80000000L
+CAPTION "Waypoint"
+FONT 8, "Tahoma"
+BEGIN
+    LTEXT           "Name:",IDC_STATIC,5,5,22,8
+    EDITTEXT        IDC_NAME,47,3,109,12,ES_AUTOHSCROLL
+    LTEXT           "Type:",IDC_STATIC,5,19,20,8
+    COMBOBOX        IDC_TYPE,47,18,109,57,CBS_DROPDOWNLIST | WS_VSCROLL | 
+                    WS_TABSTOP
+    LTEXT           "Latitude:",IDC_STATIC,5,36,30,8
+    COMBOBOX        IDC_LAT_DIR,47,34,20,30,CBS_DROPDOWNLIST | WS_VSCROLL | 
+                    WS_TABSTOP
+    EDITTEXT        IDC_LAT_DEG,70,34,18,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_LAT_MIN,92,34,18,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_LAT_SEC,114,34,24,12,ES_AUTOHSCROLL
+    LTEXT           "Longitude:",IDC_STATIC,5,51,35,8
+    COMBOBOX        IDC_LONG_DIR,47,49,20,30,CBS_DROPDOWNLIST | WS_VSCROLL | 
+                    WS_TABSTOP
+    EDITTEXT        IDC_LONG_DEG,70,49,18,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_LONG_MIN,92,49,18,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_LONG_SEC,114,49,24,12,ES_AUTOHSCROLL
+    LTEXT           "Completed:",IDC_COMPLETED_LBL,5,67,40,8
+    LTEXT           "datum",IDC_COMPLETED,47,67,112,8
+END
+
+IDD_ADD_NOTES DIALOG DISCARDABLE  0, 0, 160, 165
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_APPWINDOW | 0x80000000L
+CAPTION "Notes"
+FONT 8, "Tahoma"
+BEGIN
+    EDITTEXT        IDC_DESCRIPTION,5,3,150,157,ES_MULTILINE | 
+                    ES_AUTOVSCROLL | ES_WANTRETURN | WS_VSCROLL
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    IDD_ABOUTBOX, DIALOG
+    BEGIN
+        LEFTMARGIN, 4
+        RIGHTMARGIN, 156
+        TOPMARGIN, 4
+        BOTTOMMARGIN, 183
+    END
+
+    IDD_SETUP_GENERAL, DIALOG
+    BEGIN
+        VERTGUIDE, 17
+        VERTGUIDE, 65
+    END
+
+    IDD_ADD, DIALOG
+    BEGIN
+        VERTGUIDE, 5
+        VERTGUIDE, 47
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON    DISCARDABLE     "res\\RichesseGPS.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Accelerator
+//
+
+IDR_MAINFRAME ACCELERATORS PRELOAD MOVEABLE PURE 
+BEGIN
+    "N",            ID_FILE_NEW,            VIRTKEY, CONTROL
+    "O",            ID_FILE_OPEN,           VIRTKEY, CONTROL
+    "S",            ID_FILE_SAVE,           VIRTKEY, CONTROL
+    "Z",            ID_EDIT_UNDO,           VIRTKEY, CONTROL
+    "X",            ID_EDIT_CUT,            VIRTKEY, CONTROL
+    "C",            ID_EDIT_COPY,           VIRTKEY, CONTROL
+    "V",            ID_EDIT_PASTE,          VIRTKEY, CONTROL
+    VK_BACK,        ID_EDIT_UNDO,           VIRTKEY, ALT
+    VK_DELETE,      ID_EDIT_CUT,            VIRTKEY, SHIFT
+    VK_INSERT,      ID_EDIT_COPY,           VIRTKEY, CONTROL
+    VK_INSERT,      ID_EDIT_PASTE,          VIRTKEY, SHIFT
+    VK_F6,          ID_NEXT_PANE,           VIRTKEY 
+    VK_F6,          ID_PREV_PANE,           VIRTKEY, SHIFT
+END
+
+
+#ifndef _MAC
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,1
+ PRODUCTVERSION 1,0,0,1
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904B0"
+        BEGIN
+            VALUE "CompanyName", " \0"
+            VALUE "FileDescription", "RichesseGPS WCE MFC Application\0"
+            VALUE "FileVersion", "1, 0, 0, 1\0"
+            VALUE "InternalName", "RichesseGPS\0"
+            VALUE "LegalCopyright", "Copyright © 2008\0"
+            VALUE "LegalTrademarks", "\0"
+            VALUE "OriginalFilename", "RichesseGPS.exe\0"
+            VALUE "ProductName", "RichesseGPS Application\0"
+            VALUE "ProductVersion", "1, 0, 0, 1\0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1200
+    END
+END
+
+#endif    // !_MAC
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE PRELOAD DISCARDABLE 
+BEGIN
+    IDR_MAINFRAME           "RichesseGPS\n\nRichesseGPS\n\n\nRichesseGPS.Document\nRichesseGPS Document"
+END
+
+STRINGTABLE PRELOAD DISCARDABLE 
+BEGIN
+    IDS_MYDEVICE            "My device"
+END
+
+STRINGTABLE PRELOAD DISCARDABLE 
+BEGIN
+    AFX_IDS_IDLEMESSAGE     "Ready"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_FILE_NEW             "Create a new document\nNew"
+    ID_FILE_OPEN            "Open an existing document\nOpen"
+    ID_FILE_CLOSE           "Close the active document\nClose"
+    ID_FILE_SAVE            "Save the active document\nSave"
+    ID_FILE_SAVE_AS         "Save the active document with a new name\nSave As"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_APP_ABOUT            "Display program information, version number and copyright\nAbout"
+    ID_APP_EXIT             "Quit the application; prompts to save documents\nExit"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_FILE_MRU_FILE1       "Open this document"
+    ID_FILE_MRU_FILE2       "Open this document"
+    ID_FILE_MRU_FILE3       "Open this document"
+    ID_FILE_MRU_FILE4       "Open this document"
+    ID_FILE_MRU_FILE5       "Open this document"
+    ID_FILE_MRU_FILE6       "Open this document"
+    ID_FILE_MRU_FILE7       "Open this document"
+    ID_FILE_MRU_FILE8       "Open this document"
+    ID_FILE_MRU_FILE9       "Open this document"
+    ID_FILE_MRU_FILE10      "Open this document"
+    ID_FILE_MRU_FILE11      "Open this document"
+    ID_FILE_MRU_FILE12      "Open this document"
+    ID_FILE_MRU_FILE13      "Open this document"
+    ID_FILE_MRU_FILE14      "Open this document"
+    ID_FILE_MRU_FILE15      "Open this document"
+    ID_FILE_MRU_FILE16      "Open this document"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_NEXT_PANE            "Switch to the next window pane\nNext Pane"
+    ID_PREV_PANE            "Switch back to the previous window pane\nPrevious Pane"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_WINDOW_SPLIT         "Split the active window into panes\nSplit"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_EDIT_CLEAR           "Erase the selection\nErase"
+    ID_EDIT_CLEAR_ALL       "Erase everything\nErase All"
+    ID_EDIT_COPY            "Copy the selection and put it on the Clipboard\nCopy"
+    ID_EDIT_CUT             "Cut the selection and put it on the Clipboard\nCut"
+    ID_EDIT_FIND            "Find the specified text\nFind"
+    ID_EDIT_PASTE           "Insert Clipboard contents\nPaste"
+    ID_EDIT_REPEAT          "Repeat the last action\nRepeat"
+    ID_EDIT_REPLACE         "Replace specific text with different text\nReplace"
+    ID_EDIT_SELECT_ALL      "Select the entire document\nSelect All"
+    ID_EDIT_UNDO            "Undo the last action\nUndo"
+    ID_EDIT_REDO            "Redo the previously undone action\nRedo"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    AFX_IDS_SCCLOSE         "Close the active window and prompts to save the documents"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    AFX_IDS_SCTASKLIST      "Activate Task List"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_INDICATOR_CAPS       "CAP"
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE 9, 1
+#pragma code_page(1252)
+#endif //_WIN32
+#include "res\RichesseGPS.rc2"  // non-Microsoft eMbedded Visual C++ edited resources
+#include "afxres.rc"         // Standard components
+#include "wceres.rc"         // WCE-specific components
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

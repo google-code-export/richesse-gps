@@ -1,0 +1,63 @@
+;
+; This is an installation file
+;
+; by David Andrs, 2006-2007
+;
+
+[Version]
+	Signature = "$Windows NT$"
+	Provider = "David Andrs"
+	CESignature = "$Windows CE$"
+
+[CEDevice]
+	UnsupportedPlatforms = "HPC","HPC Pro"
+	VersionMin           = 3.0
+	VersionMax           = 10000.0
+
+[CEStrings]
+	AppName = "RichesseGPS"
+	InstallDir = "%CE1%\%AppName%"
+
+[Strings]
+	RegPath = "Software\DaProfik\RichesseGPS"
+
+[Shortcuts]
+	"RichesseGPS",0,RichesseGPS.exe
+
+[DestinationDirs]
+	Shortcuts                      = ,%CE11%
+	Files.ARM                      = ,%InstallDir%
+
+;
+; ARM
+;
+[CEDevice.ARM]
+	ProcessorType = 2577
+	BuildMax=0xE0000000
+
+[SourceDisksNames.ARM]
+	1 = ,"RichesseGPS",,..\richesseGPS\prj\ARMV4Rel
+	2 = ,"Setup",,..\setup\prj\ARMV4Rel
+	3 = ,"libexpat",,..\libexpat
+	4 = ,"License",,..
+	5 = ,"Here",,.
+
+[SourceDisksFiles.ARM]
+	RichesseGPS.exe = 1
+	setup.dll = 2
+	libexpat.dll = 3
+	COPYING = 4
+	.pois = 5
+
+[DefaultInstall.ARM]
+	CEShortcuts  = Shortcuts
+	CESetupDLL   = "setup.dll"
+	CopyFiles    = Files.ARM
+;	AddReg       = AddRegSection.ARM
+
+[Files.ARM]
+	RichesseGPS.exe,,,0x80000000
+	libexpat.dll,,,0x80000000
+	COPYING,,,0x80000000
+	.pois,,,0x00000010
+
