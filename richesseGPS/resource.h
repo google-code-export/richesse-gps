@@ -10,6 +10,7 @@
 #define IDD_ADD                         105
 #define IDD_ADD_NOTES                   106
 #define IDD_LICENSE                     107
+#define IDD_CREDITS                     108
 #define IDR_MAINFRAME                   128
 #define IDR_CANCEL                      130
 #define IDR_EDIT                        131
@@ -131,6 +132,7 @@
 #define IDC_PROGRESS                    1049
 #define IDC_HOMEPAGE_LINK               1050
 #define IDC_LICENSE                     1051
+#define IDC_CREDITS                     1052
 #define ID_MENU_OPTIONS                 32772
 #define IDS_CAP_CANCEL                  32774
 #define ID_NEW_FOLDER                   32775
@@ -176,12 +178,12 @@
 #define ID_MENU_DOWNLOADINFO            32830
 
 // Next default values for new objects
-// 
+//
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NEXT_RESOURCE_VALUE        154
 #define _APS_NEXT_COMMAND_VALUE         32831
-#define _APS_NEXT_CONTROL_VALUE         1052
-#define _APS_NEXT_SYMED_VALUE           108
+#define _APS_NEXT_CONTROL_VALUE         1053
+#define _APS_NEXT_SYMED_VALUE           109
 #endif
 #endif
