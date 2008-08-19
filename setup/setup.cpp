@@ -18,10 +18,10 @@
  *
  */
 
-#include "stdafx.h"
+#include "StdAfx.h"
 #include <projects.h>
 #include <ce_setup.h>
-#include "..\share\defs.h"
+#include "../share/defs.h"
 
 BOOL APIENTRY DllMain(HANDLE hModule, DWORD ul_reason_for_call, LPVOID lpReserved) {
     return TRUE;
