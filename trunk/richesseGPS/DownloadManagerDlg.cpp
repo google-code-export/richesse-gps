@@ -18,7 +18,7 @@
  *
  */
 
-#include "stdafx.h"
+#include "StdAfx.h"
 #include "RichesseGPS.h"
 #include "DownloadManagerDlg.h"
 #include <afxinet.h>
@@ -72,7 +72,7 @@ END_MESSAGE_MAP()
 
 BOOL CDownloadManagerDlg::OnInitDialog() {
 	CCeDialog::OnInitDialog();
-	
+
 	CRect rc;
 	m_ctlItems.GetClientRect(rc);
 	rc.right -= ::GetSystemMetrics(SM_CXVSCROLL);
@@ -114,7 +114,7 @@ BOOL PeekAndPump() {
 		if (!AfxGetApp()->PumpMessage()) {
 			::PostQuitMessage(0);
 			return FALSE;
-		}	
+		}
 	}
 
 	return TRUE;
@@ -204,11 +204,11 @@ void CDownloadManagerDlg::ThreadProc() {
 		url.Format(Config.GCUrl, poi->Id);
 		DWORD ret = DownloadFile(url, filePath);
 
-		if (ret == 0) 
+		if (ret == 0)
 			m_ctlItems.SetItemText(i, 1, _T("failed"));
 		else
 			m_ctlItems.SetItemText(i, 1, _T("ok"));
-	
+
 		i++;
 	}
 
@@ -224,7 +224,7 @@ void CDownloadManagerDlg::ThreadProc() {
 
 void CDownloadManagerDlg::OnSize(UINT nType, int cx, int cy) {
 	CCeDialog::OnSize(nType, cx, cy);
-	
+
 	m_ctlItems.SetWindowPos(NULL, 0, SCALEX(24), cx, cy - SCALEY(24) - SCALEY(20), SWP_NOZORDER);
 	m_ctlProgress.SetWindowPos(NULL, 0, cy - SCALEX(20), cx, SCALEY(20), SWP_NOZORDER);
 }
