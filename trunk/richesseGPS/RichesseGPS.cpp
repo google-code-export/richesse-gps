@@ -26,6 +26,7 @@
 #include "ctrls/CePropertySheet.h"
 #include "AboutPg.h"
 #include "LicensePg.h"
+#include "CreditsPg.h"
 
 #include "files/files.h"
 
@@ -91,7 +92,7 @@ END_MESSAGE_MAP()
 
 BOOL CAboutDlg::OnInitDialog()  {
 	CCeDialog::OnInitDialog();
-	
+
 	return TRUE;  // return TRUE unless you set the focus to a control
 	              // EXCEPTION: OCX Property Pages should return FALSE
 }
@@ -136,7 +137,7 @@ BOOL CRichesseGPSApp::InitInstance() {
 	icce.dwSize = sizeof(icce);
 	icce.dwICC = ICC_DATE_CLASSES | ICC_LISTVIEW_CLASSES | ICC_PROGRESS_CLASS | ICC_UPDOWN_CLASS | ICC_TREEVIEW_CLASSES | ICC_TOOLTIP_CLASSES | ICC_TAB_CLASSES;
 	InitCommonControlsEx(&icce);
-	
+
 	SHInitExtraControls();
 
 
@@ -164,10 +165,12 @@ BOOL CRichesseGPSApp::InitInstance() {
 void CRichesseGPSApp::OnAppAbout() {
 	CAboutPg pgAbout;
 	CLicensePg pgLicense;
-	
+	CCreditsPg pgCredits;
+
 	CCePropertySheet sheet(IDS_ABOUT);
 	sheet.AddPage(&pgAbout);
 	sheet.AddPage(&pgLicense);
+	sheet.AddPage(&pgCredits);
 	sheet.SetMenu(IDR_CANCEL);
 	sheet.DoModal();
 }
@@ -197,7 +200,7 @@ BOOL CRichesseGPSApp::SavePois() {
 int CRichesseGPSApp::ExitInstance() {
 	SavePois();
 	Config.Save();
-	
+
 	return CWinApp::ExitInstance();
 }
 
