@@ -4,23 +4,27 @@
 #
 
 PRODUCT=RichesseGPS
-VERSION=2.0
+VERSION=2.0.1
 
-CABWIZ="c:/program files/windows ce tools/wce420/pocket pc 2003/tools/cabwiz.exe"
-ZIP="c:/program files/unxutils/usr/local/wbin/zip.exe"
+# On linux
+CABWIZ=wine z:\\opt\\wince-arm\\wce400\\tools\\cabwiz.exe
+ZIP=zip
+
+# On windows
+#CABWIZ="c:/program files/windows ce tools/wce420/pocket pc 2003/tools/cabwiz.exe"
+#ZIP="c:/program files/unxutils/usr/local/wbin/zip.exe"
 
 all: cab
 
-cab: $(PRODUCT).ARM.CAB
+cab: $(PRODUCT)-$(VERSION).ARM.CAB
 
-$(PRODUCT).ARM.CAB: RichesseGPS.inf
-	$(CABWIZ) RichesseGPS.inf /cpu ARM
+$(PRODUCT)-$(VERSION).ARM.CAB: RichesseGPS.inf
+	$(CABWIZ) RichesseGPS.inf /CPU ARM
+	$(RM) $(PRODUCT).ARM.DAT
+	mv $(PRODUCT).ARM.CAB $(PRODUCT)-$(VERSION).ARM.CAB
 
-zip: $(PRODUCT).ARM.CAB
-	cp $(PRODUCT).ARM.CAB $(PRODUCT)-$(VERSION).ARM.cab
-	$(ZIP) -m $(PRODUCT)-$(VERSION).zip $(PRODUCT)-$(VERSION).ARM.cab
-
-dist:
+zip: $(PRODUCT)-$(VERSION).ARM.CAB
+	$(ZIP) $(PRODUCT)-$(VERSION).zip $(PRODUCT)-$(VERSION).ARM.CAB
 
 clean:
 	rm -f *.DAT

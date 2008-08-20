@@ -2,7 +2,7 @@
 # RichesseGPS
 #
 
-OUTDIR=build
+OUTDIR=ARMV4Rel
 BIN=RichesseGPS.exe
 
 VPATH=../share:ctrls:files:gps:misc

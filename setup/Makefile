@@ -2,7 +2,7 @@
 # RichesseGPS Setup
 #
 
-OUTDIR=build
+OUTDIR=ARMV4Rel
 BIN=setup.dll
 DEF=setup.def
 
