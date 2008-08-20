@@ -556,9 +556,9 @@ BEGIN
     LTEXT           "Coordinates:",IDC_STATIC,17,19,42,8
     COMBOBOX        IDC_COORDS,65,17,71,59,CBS_DROPDOWNLIST | WS_VSCROLL |
                     WS_TABSTOP
-    LTEXT           "Units:",IDC_STATIC,17,35,20,8,WS_DISABLED
+    LTEXT           "Units:",IDC_STATIC,17,35,20,8
     COMBOBOX        IDC_UNITS,65,33,71,45,CBS_DROPDOWNLIST | CBS_SORT |
-                    WS_DISABLED | WS_VSCROLL | WS_TABSTOP
+                    WS_VSCROLL | WS_TABSTOP
     LTEXT           "Suspend Mode",IDC_C_SUSPEND_MODE,4,53,152,10
     CONTROL         "Prevent suspend mode",IDC_PREVENT_SUSPEND,"Button",
                     BS_AUTOCHECKBOX | WS_TABSTOP,17,67,139,10

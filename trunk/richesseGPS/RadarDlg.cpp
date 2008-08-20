@@ -22,6 +22,7 @@
 #include "RichesseGPS.h"
 #include "RadarDlg.h"
 #include "../share/helpers.h"
+#include "units.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -31,7 +32,7 @@ static char THIS_FILE[] = __FILE__;
 
 /////////////////////////////////////////////////////////////////////////////
 
-static int CALLBACK 
+static int CALLBACK
 PointsCompareProc(LPARAM lParam1, LPARAM lParam2, LPARAM lParamSort) {
 	CRadarDlg *pg = (CRadarDlg *) lParamSort;
 	CPoi *poi1 = (CPoi *) lParam1;
@@ -93,7 +94,7 @@ END_MESSAGE_MAP()
 
 BOOL CRadarDlg::OnInitDialog() {
 	CCeDialog::OnInitDialog();
-	
+
 	CRect rc;
 	m_ctlPoints.GetClientRect(rc);
 
@@ -126,12 +127,13 @@ BOOL CRadarDlg::OnInitDialog() {
 		CPoi *poi = theApp.POIs.GetNext(pos);
 		InsertPoi(poi);
 	}
+	UpdateColumnWidths();
 
 	SetTimer(RefreshTimer, 3000, NULL);
 
 	SortPois();
 	UpdateControls();
-	
+
 	return TRUE;  // return TRUE unless you set the focus to a control
 	              // EXCEPTION: OCX Property Pages should return FALSE
 }
@@ -152,7 +154,7 @@ void CRadarDlg::InsertPoi(CPoi *poi) {
 	int n = m_ctlPoints.GetItemCount();
 //	int item = m_ctlPoints.InsertItem(n, poi->Name, poi->Completed ? ICON_CHECKED : ICON_NOT_CHECKED);
 	int item = m_ctlPoints.InsertItem(n, poi->Name);
-	
+
 	SetPoiImage(item, poi->Type);
 //	m_ctlPoints.SetItemText(item, 1, poi->Id);
 //	m_ctlPoints.SetItemText(item, 1, poi->Name);
@@ -169,12 +171,8 @@ void CRadarDlg::UpdateDistance(int item) {
 		CPoi *poi = (CPoi *) m_ctlPoints.GetItemData(item);
 		double dist, dir;
 
-		CalcDistanceDir(theApp.Gps.Latitude, theApp.Gps.Longitude, poi->Latitude, poi->Longitude, dist, dir); 
-
-		if (dist < 2)
-			sDist.Format(_T("%.0lf m"), dist * 1000);
-		else
-			sDist.Format(_T("%.2lf km"), dist);
+		CalcDistanceDir(theApp.Gps.Latitude, theApp.Gps.Longitude, poi->Latitude, poi->Longitude, dist, dir);
+		FormatDistance(sDist, dist);
 	}
 	else {
 		sDist = _T("???");
@@ -184,7 +182,7 @@ void CRadarDlg::UpdateDistance(int item) {
 
 void CRadarDlg::OnDestroy() {
 	CCeDialog::OnDestroy();
-	
+
 	KillTimer(RefreshTimer);
 }
 
@@ -235,8 +233,20 @@ void CRadarDlg::OnTimer(UINT nIDEvent) {
 				UpdateDistance(i);
 			}
 			m_ctlPoints.SetRedraw(TRUE);
+			UpdateColumnWidths();
 		}
 	}
 
 	CCeDialog::OnTimer(nIDEvent);
+}
+
+void CRadarDlg::UpdateColumnWidths() {
+	CRect rc;
+	m_ctlPoints.GetClientRect(rc);
+
+	rc.right -= ::GetSystemMetrics(SM_CXVSCROLL);
+
+	m_ctlPoints.SetColumnWidth(1, LVSCW_AUTOSIZE);
+	int col1wd = m_ctlPoints.GetColumnWidth(1);
+	m_ctlPoints.SetColumnWidth(0, rc.Width() - col1wd);
 }

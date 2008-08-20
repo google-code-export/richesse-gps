@@ -26,6 +26,7 @@
 #include "AddWaypointDlg.h"
 #include "WaypointNotes.h"
 #include "DownloadManagerDlg.h"
+#include "units.h"
 
 #include "../share/file.h"
 
@@ -76,13 +77,13 @@ END_MESSAGE_MAP()
 /////////////////////////////////////////////////////////////////////////////
 // CChildView message handlers
 
-BOOL CChildView::PreCreateWindow(CREATESTRUCT& cs) 
+BOOL CChildView::PreCreateWindow(CREATESTRUCT& cs)
 {
 	if (!CWnd::PreCreateWindow(cs))
 		return FALSE;
 
 	cs.style &= ~WS_BORDER;
-	cs.lpszClass = AfxRegisterWndClass(CS_HREDRAW|CS_VREDRAW|CS_DBLCLKS, 
+	cs.lpszClass = AfxRegisterWndClass(CS_HREDRAW|CS_VREDRAW|CS_DBLCLKS,
 		NULL, HBRUSH(COLOR_WINDOW+1), NULL);
 
 	CreateFonts();
@@ -90,12 +91,9 @@ BOOL CChildView::PreCreateWindow(CREATESTRUCT& cs)
 	return TRUE;
 }
 
-void CChildView::OnPaint() 
-{
+void CChildView::OnPaint() {
 	CPaintDC dc(this); // device context for painting
-	
-	// TODO: Add your message handler code here
-	
+
 	// Do not call CWnd::OnPaint() for painting messages
 }
 
@@ -125,7 +123,7 @@ int CChildView::OnCreate(LPCREATESTRUCT lpCreateStruct) {
 		return -1;
 
 	CRect rc;
-	
+
 	m_ctlWaypoint.Create(_T("Waypoint Name"), WS_CHILD | WS_VISIBLE | SS_CENTER | SS_NOTIFY | SS_NOPREFIX, rc, this, IDC_WAYPOINT);
 	m_ctlWaypoint.SetFont(&m_fntWaypoint);
 
@@ -197,7 +195,7 @@ int CChildView::OnCreate(LPCREATESTRUCT lpCreateStruct) {
 
 	m_ctlNotes.Create(WS_CHILD | ES_AUTOVSCROLL | ES_LEFT | ES_MULTILINE | ES_WANTRETURN | WS_VSCROLL | WS_BORDER, rc, this, IDC_NOTES);
 
-	// 
+	//
 	m_ctlInfo.Create(WS_CHILD | WS_CLIPSIBLINGS | WS_BORDER, rc, GetSafeHwnd(), IDC_INFO);
 	::SetWindowLong(m_ctlInfo.GetHwnd(), GWL_ID, 12321);
 	::SendMessage(m_ctlInfo.GetHwnd(), WM_SETTEXT, 0, (LPARAM) (LPCTSTR) _T(""));
@@ -219,7 +217,7 @@ int CChildView::OnCreate(LPCREATESTRUCT lpCreateStruct) {
 
 void CChildView::OnSize(UINT nType, int cx, int cy) {
 	CWnd ::OnSize(nType, cx, cy);
-	
+
 	CRect rc;
 	GetClientRect(&rc);
 
@@ -262,7 +260,7 @@ void CChildView::OnLButtonDown(UINT nFlags, CPoint point) {
 //	DEBUG:
 //	m_ctlCompass.SetNorthDirection(170);
 //	Default();
-	
+
 //	CWnd ::OnLButtonDown(nFlags, point);
 }
 
@@ -278,15 +276,13 @@ void CChildView::ShowInfo() {
 			m_ctlLongitude.SetWindowText(s);
 
 			// speed
-			double speed;
-			speed = (theApp.Gps.Speed * 0.514444) * 3.6;	// from knots to km/s
-			s.Format(_T("%.1lf kph"), speed);
+			FormatSpeed(s, theApp.Gps.Speed);
 			m_ctlSpeed.SetWindowText(s);
 
 			m_ctlCompass.SetNorthDirection((int) theApp.Gps.Track);
 			m_ctlCompass.Invalidate();
 
-			s.Format(_T("%.1lf m"), theApp.Gps.Altitude);
+			FormatAltitude(s, theApp.Gps.Altitude);
 			m_ctlAltitude.SetWindowText(s);
 
 			/////////
@@ -325,7 +321,7 @@ void CChildView::ShowInfo() {
 				m_ctlSatellites.m_arSatellitesForFix[i] = -1;
 			}
 			m_ctlSatellites.Invalidate();
-		}	
+		}
 
 		if (theApp.Destination != NULL) {
 			m_ctlWaypoint.SetWindowText(theApp.Destination->Name);
@@ -344,10 +340,7 @@ void CChildView::ShowInfo() {
 
 			if (theApp.Gps.Quality > 0) {
 				CString sDist;
-				if (distance < 2)
-					sDist.Format(_T("%.0lf m"), distance * 1000);
-				else
-					sDist.Format(_T("%.2lf km"), distance);
+				FormatDistance(sDist, distance);
 				m_ctlDistance.SetWindowText(sDist);
 
 				m_ctlCompass.SetDirection((int) (theApp.Gps.Track - (dir * 180.0 / PI)));
@@ -396,7 +389,7 @@ void CChildView::OnAdd() {
 		poi->Longitude = pgWaypoint.m_dLongitude;
 		poi->Type = (CPoi::EType) pgWaypoint.m_nType;
 		poi->Notes = pgNotes.m_strDescription;
-		
+
 		theApp.POIs.AddTail(poi);
 	}
 }
@@ -434,7 +427,7 @@ void CChildView::ShowNotesPg(BOOL show) {
 
 void CChildView::ShowInfoPg(BOOL show) {
 	int cmd = show ? SW_SHOW : SW_HIDE;
-		
+
 	::ShowWindow(m_ctlInfo.GetHwnd(), cmd);
 }
 
@@ -486,7 +479,7 @@ void CChildView::LoadHtml(LPCTSTR fileName) {
 			CString s = CharToWChar(buffer, r, CP_UTF8);
 			m_ctlInfo.AddText(s);
 		}
-		
+
 		m_ctlInfo.EndOfSource();
 
 		file.Close();
@@ -508,9 +501,9 @@ void CChildView::OnWaypointCtx(NMHDR *pNMHDR, LRESULT *pResult) {
 	if (theApp.Destination != NULL) {
 		CMenu mnu;
 		mnu.LoadMenu(IDR_WAYPOINT_CTX);
-		
+
 		CMenu *popup = mnu.GetSubMenu(0);
-		
+
 		CString s;
 		s.Format(IDS_COPY_STR, theApp.Destination->Id);
 		popup->InsertMenu(0, MF_STRING, ID_COPY_WAYPOINT, s);
@@ -577,11 +570,11 @@ void CChildView::OnMarkAs(UINT nID) {
 			case ID_POI_MARKAS_NOTCOMPLETED:
 				poi->Status = CPoi::NotCompleted;
 				break;
-				
+
 			case ID_POI_MARKAS_NOTFOUND:
 				poi->Status = CPoi::NotFound;
 				break;
-			
+
 			case ID_POI_MARKAS_COMPLETED:
 				poi->Status = CPoi::Completed;
 				GetLocalTime(&(poi->TimeCompleted));
