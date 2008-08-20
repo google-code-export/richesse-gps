@@ -78,7 +78,7 @@ BOOL ReadRPFile(const CString &fileName, CList<CPoi *, CPoi *> &pois) {
 				ReadSystemTime(file, poi->TimeCompleted);
 			else
 				file.Seek(hdr.Size, FILE_CURRENT);
-			
+
 			remain -= hdr.Size;
 		} // while
 
@@ -93,7 +93,6 @@ BOOL ReadRPFile(const CString &fileName, CList<CPoi *, CPoi *> &pois) {
 
 		remainItems -= hdrItem.Size;
 	}
-
 
 	file.Close();
 
