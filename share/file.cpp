@@ -1,5 +1,5 @@
 /**
- *  File.cpp : implementation file
+ *  file.cpp
  *
  *  Copyright (C) 2008  David Andrs <pda@jasnapaka.com>
  *
@@ -23,7 +23,7 @@
 
 CBufferedFile::CBufferedFile(DWORD bufferSize/* = 8192*/) {
 	File = NULL;
-	
+
 	BufferSize = bufferSize;
 	Buffer = new BYTE [BufferSize];
 
@@ -118,15 +118,13 @@ BOOL CBufferedFile::Read(LPVOID lpBuffer, DWORD nNumberOfBytesToRead, DWORD *nBy
 			int nToRead = BufferFilled - BufferPos;
 			if (nToRead <= 0) {
 				DWORD read;
-				
+
 				BufferStart = SetFilePointer(File, 0, NULL, FILE_CURRENT);
 				ret = ReadFile(File, Buffer, BufferSize, &read, NULL);
-				
 				BufferFilled = read;
 				BufferPos = 0;
-				
-				if (!ret) break;
-				if (ret && read == 0) {
+
+				if (!ret || read == 0)	{
 					// reading beyond the end of the file
 					ret = FALSE;
 					break;
@@ -139,7 +137,6 @@ BOOL CBufferedFile::Read(LPVOID lpBuffer, DWORD nNumberOfBytesToRead, DWORD *nBy
 				nRemain -= nToRead;
 				lpDest += nToRead;
 				BufferPos += nToRead;
-				break;
 			}
 		}
 	}
@@ -168,11 +165,11 @@ BOOL CBufferedFile::Write(LPCVOID lpBuffer, DWORD nNumberOfBytesToWrite, DWORD *
 			BufferPos = 0;
 			nRemain -= nToWrite;
 			lpSrc += nToWrite;
+			numberOfBytesWritten += nToWrite;
 
 			BufferStart = SetFilePointer(File, 0, NULL, FILE_CURRENT);
 			DWORD nWritten;
 			WriteFile(File, Buffer, BufferSize, &nWritten, NULL);
-			numberOfBytesWritten += nWritten;
 		}
 	}
 
