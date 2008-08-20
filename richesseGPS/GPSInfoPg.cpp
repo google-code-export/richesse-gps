@@ -23,6 +23,7 @@
 #include "GPSInfoPg.h"
 #include "../share/helpers.h"
 #include "gps/gps.h"
+#include "units.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -79,7 +80,7 @@ END_MESSAGE_MAP()
 BOOL CGPSInfoPg::OnInitDialog() {
 	CPropertyPage::OnInitDialog();
 
-	ShowInfo();	
+	ShowInfo();
 	SetTimer(RefreshTimer, 1000, NULL);
 
 	return TRUE;  // return TRUE unless you set the focus to a control
@@ -88,7 +89,7 @@ BOOL CGPSInfoPg::OnInitDialog() {
 
 void CGPSInfoPg::OnDestroy() {
 	CPropertyPage::OnDestroy();
-	
+
 	KillTimer(RefreshTimer);
 }
 
@@ -96,7 +97,7 @@ void CGPSInfoPg::OnTimer(UINT nIDEvent) {
 	if (nIDEvent == RefreshTimer) {
 		ShowInfo();
 	}
-	
+
 	CPropertyPage::OnTimer(nIDEvent);
 }
 
@@ -113,8 +114,7 @@ void CGPSInfoPg::ShowInfo() {
 		sText = FormatCoord(theApp.Gps.Longitude > 0 ? 'E' : 'W', fabs(theApp.Gps.Longitude));
 		m_ctlLongitude.SetWindowText(sText);
 
-		// TODO: english units
-		sText.Format(_T("%.1lf m"), theApp.Gps.Altitude);
+		FormatAltitude(sText, theApp.Gps.Altitude);
 		m_ctlAltitude.SetWindowText(sText);
 
 		// satellites

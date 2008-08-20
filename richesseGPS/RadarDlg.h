@@ -78,6 +78,7 @@ protected:
 	void SetPoiImage(int item, CPoi::EType type);
 	void UpdateDistance(int item);
 
+	void UpdateColumnWidths();
 
 	UINT RefreshTimer;
 
