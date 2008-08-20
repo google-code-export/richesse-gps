@@ -244,8 +244,6 @@ void CRadarDlg::UpdateColumnWidths() {
 	CRect rc;
 	m_ctlPoints.GetClientRect(rc);
 
-	rc.right -= ::GetSystemMetrics(SM_CXVSCROLL);
-
 	m_ctlPoints.SetColumnWidth(1, LVSCW_AUTOSIZE);
 	int col1wd = m_ctlPoints.GetColumnWidth(1);
 	m_ctlPoints.SetColumnWidth(0, rc.Width() - col1wd);
