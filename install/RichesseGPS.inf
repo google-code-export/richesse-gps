@@ -1,7 +1,7 @@
 ;
 ; This is an installation file
 ;
-; by David Andrs, 2006-2007
+; by David Andrs, 2006-2008
 ;
 
 [Version]
@@ -36,8 +36,8 @@
 	BuildMax=0xE0000000
 
 [SourceDisksNames.ARM]
-	1 = ,"RichesseGPS",,..\richesseGPS\prj\ARMV4Rel
-	2 = ,"Setup",,..\setup\prj\ARMV4Rel
+	1 = ,"RichesseGPS",,..\richesseGPS\ARMV4Rel
+	2 = ,"Setup",,..\setup\ARMV4Rel
 	3 = ,"libexpat",,..\libexpat
 	4 = ,"License",,..
 	5 = ,"Here",,.
@@ -53,11 +53,10 @@
 	CEShortcuts  = Shortcuts
 	CESetupDLL   = "setup.dll"
 	CopyFiles    = Files.ARM
-;	AddReg       = AddRegSection.ARM
 
 [Files.ARM]
-	RichesseGPS.exe,,,0x80000000
-	libexpat.dll,,,0x80000000
-	COPYING,,,0x80000000
+	RichesseGPS.exe,,,0x40000000
+	libexpat.dll,,,0x40000000
+	COPYING,,,0x40000000
 	.pois,,,0x00000010
 
