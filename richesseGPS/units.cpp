@@ -24,8 +24,8 @@
 
 void FormatAltitude(CString &s, double altitude) {
 	switch (Config.UnitsType) {
-		case English: s.Format(_T("%.1lf ft"), altitude); break;
-		default: s.Format(_T("%.1lf m"), altitude * 3.2808399); break;
+		case English: s.Format(_T("%.1lf ft"), altitude * 3.2808399); break;
+		default: s.Format(_T("%.1lf m"), altitude); break;
 	}
 }
 
@@ -38,7 +38,7 @@ void FormatSpeed(CString &s, double speed) {
 }
 
 void FormatDistance(CString &s, double distance) {
-	// distnace is in km
+	// distance is in km
 	switch (Config.UnitsType) {
 		case English:
 			if (distance < 1) s.Format(_T("%.0lf yards"), distance * 1093.6133);
