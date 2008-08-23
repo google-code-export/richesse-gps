@@ -18,6 +18,8 @@
  *
  */
 
+#include <windows.h>
+
 #include "StdAfx.h"
 #include "RichesseGPS.h"
 #include "PoiMan.h"
@@ -257,15 +259,26 @@ void CPoiMan::SetPoiImage(int item, CPoi::EType type) {
 }
 
 void CPoiMan::InsertPoi(CPoi *poi) {
-	int n = m_ctlPoints.GetItemCount();
-	int item = m_ctlPoints.InsertItem(n, poi->Name, poi->Status == CPoi::Completed ? ICON_CHECKED : ICON_NOT_CHECKED);
-	
+	LVFINDINFO info;
+	info.flags = LVFI_PARTIAL|LVFI_STRING;
+	CString str;
+	info.psz = poi->Name;
+	int nIndex;
+	if ((nIndex = m_ctlPoints.FindItem(&info))!= -1) {
+//		MessageBox(NULL,L"Multiple POI item",L"POI warning",MB_OK | MB_ICONINFORMATION);
+	}
+	else
+	{
+		int n = m_ctlPoints.GetItemCount();
+		int item = m_ctlPoints.InsertItem(n, poi->Name, poi->Status == CPoi::Completed ? ICON_CHECKED : ICON_NOT_CHECKED);
+
 	SetPoiImage(item, poi->Type);
 //	m_ctlPoints.SetItemText(item, 1, poi->Id);
 //	m_ctlPoints.SetItemText(item, 1, poi->Name);
 //	m_ctlPoints.SetCheck(item, poi->Completed);
 
 	m_ctlPoints.SetItemData(item, (DWORD) poi);
+	}
 }
 
 void CPoiMan::OnDestroy() {
