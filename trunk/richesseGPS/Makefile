@@ -5,12 +5,13 @@
 OUTDIR=ARMV4Rel
 BIN=RichesseGPS.exe
 
-VPATH=../share:ctrls:files:gps:misc
+VPATH=../share:ctrls:files:gps:misc:net
 SRC=$(wildcard *.cpp)\
 	$(wildcard ctrls/*.cpp)\
 	$(wildcard files/*.cpp)\
 	$(wildcard gps/*.cpp)\
 	$(wildcard misc/*.cpp)\
+	$(wildcard net/*.cpp)\
 	$(wildcard ../share/*.cpp)
 
 RC=RichesseGPS.rc
