@@ -129,6 +129,8 @@ protected:
 	afx_msg void OnDownloadInfo();
 	afx_msg void OnMarkAs(UINT nID);
 
+	BOOL OnNotify(WPARAM wParam, LPARAM lParam, LRESULT* pResult);
+
 	DECLARE_MESSAGE_MAP()
 };
 

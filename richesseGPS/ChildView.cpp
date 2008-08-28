@@ -27,6 +27,7 @@
 #include "WaypointNotes.h"
 #include "DownloadManagerDlg.h"
 #include "units.h"
+#include "net/Connection.h"
 
 #include "../share/file.h"
 
@@ -581,4 +582,35 @@ void CChildView::OnMarkAs(UINT nID) {
 				break;
 		}
 	}
+}
+
+BOOL CChildView::OnNotify(WPARAM wParam, LPARAM lParam, LRESULT* pResult) {
+	NMHDR *pnmh = (LPNMHDR) lParam;
+	if (pnmh != NULL) {
+		NM_HTMLVIEW *pnmHTML = (NM_HTMLVIEW *) lParam;
+
+		if (pnmh->code == NM_HOTSPOT) {
+			*pResult = 1;
+			return 1;
+		}
+		else if (pnmh->code == NM_CONTEXTMENU) {
+			*pResult = 1;
+			return 1;
+		}
+		else if (pnmh->code == NM_INLINE_IMAGE) {
+			if (Connection.IsAvailable() == S_OK) {
+				// got connection -> use default handling of an image
+				*pResult = 0;
+				return 0;
+			}
+			else {
+				// no connection -> prevent loading of not cached images
+				::SendMessage(m_ctlInfo.GetHwnd(), DTM_IMAGEFAIL, 0, (LPARAM) (INLINEIMAGEINFO*) pnmHTML->dwCookie);
+				*pResult = 1;
+				return 1;
+			}
+		}
+	}
+
+	return CWnd::OnNotify(wParam, lParam, pResult);
 }

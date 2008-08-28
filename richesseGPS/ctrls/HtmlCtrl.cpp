@@ -1,5 +1,5 @@
 /**
- *  HtmlCtrl.cpp : implementation file
+ *  HtmlCtrl.cpp
  *
  *  Copyright (C) 2008  David Andrs <pda@jasnapaka.com>
  *
@@ -21,7 +21,14 @@
 #include "../StdAfx.h"
 #include "../RichesseGPS.h"
 #include "HtmlCtrl.h"
-#include <htmlctrl.h>
+
+
+#ifdef MYDEBUG
+#undef THIS_FILE
+static TCHAR THIS_FILE[] = _T(__FILE__);
+#include "../debug/crtdbg.h"
+#define new MYDEBUG_NEW
+#endif
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -47,7 +54,7 @@ END_MESSAGE_MAP()
 BOOL CHTMLCtrl::Create(DWORD dwStyle, CRect &rc, HWND parent, UINT id) {
 	HHtmlDLL = LoadLibrary(_T("htmlview.dll"));
 
-	HWnd = ::CreateWindow(_T("DISPLAYCLASS"), NULL, dwStyle, 
+	HWnd = ::CreateWindow(_T("DISPLAYCLASS"), NULL, dwStyle,
 		rc.left, rc.top, rc.Width(), rc.Height(),
 		parent, (HMENU) id, HHtmlDLL, NULL);
 
@@ -82,10 +89,6 @@ void CHTMLCtrl::AddText(const CString &str) {
 	AddText((LPWSTR) (LPCTSTR) str);
 }
 
-void CHTMLCtrl::AddText(char *str) {
-	::SendMessage(HWnd, DTM_ADDTEXT, FALSE, (LPARAM) str);
-}
-
 void CHTMLCtrl::EndOfSource() {
 	::SendMessage(HWnd, DTM_ENDOFSOURCE, 0, 0);
 }
@@ -96,4 +99,8 @@ BOOL CHTMLCtrl::IsSelection() {
 
 void CHTMLCtrl::CopySelectionToNewIStream(DWORD *rsd, LPSTREAM *stream) {
 	::SendMessage(HWnd, DTM_COPYSELECTIONTONEWISTREAM, (WPARAM) rsd, (LPARAM) stream);
+}
+
+HWND CHTMLCtrl::SetParent(HWND hNewParent) {
+	return ::SetParent(HWnd, hNewParent);
 }

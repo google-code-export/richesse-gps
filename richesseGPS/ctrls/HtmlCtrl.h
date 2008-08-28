@@ -1,5 +1,5 @@
 /**
- *  HtmlCtrl.h : header file
+ *  HtmlCtrl.h
  *
  *  Copyright (C) 2008  David Andrs <pda@jasnapaka.com>
  *
@@ -25,6 +25,7 @@
 #pragma once
 #endif // _MSC_VER > 1000
 
+#include <htmlctrl.h>
 
 /////////////////////////////////////////////////////////////////////////////
 // CHTMLCtrl
@@ -44,10 +45,10 @@ public:
 	void ZoomLevel(int level);
 	void AddText(LPWSTR str);
 	void AddText(const CString &str);
-	void AddText(char *str);
 	void EndOfSource();
 	BOOL IsSelection();
 	void CopySelectionToNewIStream(DWORD *rsd, LPSTREAM *stream);
+	HWND SetParent(HWND hNewParent);
 
 protected:
 	static HINSTANCE HHtmlDLL;
