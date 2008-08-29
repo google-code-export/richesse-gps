@@ -4,7 +4,7 @@
 #
 
 PRODUCT=RichesseGPS
-VERSION=2.0.1
+VERSION=2.1
 
 # On linux
 CABWIZ=wine z:\\opt\\wince-arm\\wce400\\tools\\cabwiz.exe
