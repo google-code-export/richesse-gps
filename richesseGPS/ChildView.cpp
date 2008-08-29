@@ -475,11 +475,13 @@ void CChildView::LoadHtml(LPCTSTR fileName) {
 
 		char buffer[2048];
 		DWORD r;
-		while (file.Read(buffer, 2047, &r)) {
+		BOOL ok;
+		do {
+			ok = file.Read(buffer, 2047, &r);
 			buffer[r] = '\0';
 			CString s = CharToWChar(buffer, r, CP_UTF8);
 			m_ctlInfo.AddText(s);
-		}
+		} while (ok);
 
 		m_ctlInfo.EndOfSource();
 
