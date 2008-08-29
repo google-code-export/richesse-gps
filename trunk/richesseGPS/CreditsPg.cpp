@@ -75,7 +75,11 @@ BOOL CCreditsPg::OnInitDialog() {
 	credits.Format(
 		L"Current developers:\r\n"
 		L"David Andrs\r\n"
-		L"Petr Blaha\r\n");
+		L"\r\n"
+		L"Contributors:\r\n"
+		L"Petr Blaha\r\n"
+		L"blueshade\r\n"
+	);
 
 	m_ctlCredits.SetWindowText(credits);
 	m_ctlCredits.SetReadOnly();
