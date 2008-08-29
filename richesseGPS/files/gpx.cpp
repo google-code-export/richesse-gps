@@ -33,7 +33,9 @@ static enum EMainState {
 	Gpx,
 	Wpt,
 	GS_Logs,
-	GS_TBs
+	GS_TBs,
+	GCAU_Cache,
+	GCAU_Logs
 };
 
 static enum EWaypointField {
@@ -60,7 +62,8 @@ static enum EWaypointField {
 	GS_LogText,
 	GS_LogFinder,
 	GS_TB,
-	GS_TB_Name
+	GS_TB_Name,
+	X_Unsupported
 };
 
 struct CLogEntry {
@@ -69,10 +72,10 @@ struct CLogEntry {
 	BOOL Encoded;			// TRUE if HTML
 	CString Type;			// TODO: use enum
 	CString Finder;
-	
+
 	CLogEntry() {
 		memset(&Date, 0, sizeof(Date));
-		Encoded = TRUE; 
+		Encoded = TRUE;
 	}
 };
 
@@ -130,7 +133,7 @@ static BOOL WriteString(HANDLE hFile, const CString &str) {
 	char *conv = new char [len];
 	WideCharToMultiByte(CP_UTF8, 0, str, str.GetLength(), conv, len, NULL, NULL);
 	DWORD written;
-	BOOL res = WriteFile(hFile, conv, len, &written, NULL);	
+	BOOL res = WriteFile(hFile, conv, len, &written, NULL);
 	delete [] conv;
 	return res;
 }
@@ -141,15 +144,15 @@ static BOOL WriteTime(HANDLE hFile, SYSTEMTIME *time) {
 	return WriteString(hFile, str);
 }
 
-// save the HTML file with read info 
+// save the HTML file with read info
 static void DumpHtmlFile(const CString &id) {
 	CString strCacheDir;
 	strCacheDir.Format(_T("%s\\cache"), Config.InstallDir);
 	CreateDirectory(strCacheDir, NULL);
-	
+
 	CString fileName;
 	fileName.Format(_T("%s\\%s.html"), strCacheDir, id);
-	
+
 	HANDLE hFile = CreateFile(fileName, GENERIC_WRITE, 0, NULL, CREATE_ALWAYS, FILE_ATTRIBUTE_NORMAL, NULL);
 	if (hFile != INVALID_HANDLE_VALUE) {
 		WriteString(hFile, _T("<html>\n"));
@@ -173,7 +176,7 @@ static void DumpHtmlFile(const CString &id) {
 		WriteString(hFile, _T("<div id=\"cache-type\">"));
 		WriteString(hFile, GsType);
 		WriteString(hFile, _T("</div>\n"));
-		
+
 		WriteString(hFile, _T("<div class=\"body\">"));
 		// name
 		WriteString(hFile, _T("<div id=\"cb\">A cache by "));
@@ -197,12 +200,12 @@ static void DumpHtmlFile(const CString &id) {
 		WriteString(hFile, _T("<strong>Terrain:</strong> "));
 		WriteString(hFile, GsTerrain);
 		WriteString(hFile, _T("</div>\n"));
-		
+
 		// short description
 		WriteString(hFile, _T("<div id=\"s-desc\">\n"));
 		WriteString(hFile, GsShortDesc);
-		WriteString(hFile, _T("</div>\n"));			
-		
+		WriteString(hFile, _T("</div>\n"));
+
 		// long description
 		WriteString(hFile, _T("<div id=\"l-desc\">\n"));
 		WriteString(hFile, GsLongDesc);
@@ -212,29 +215,29 @@ static void DumpHtmlFile(const CString &id) {
 		if (!GsHints.IsEmpty()) {
 			WriteString(hFile, _T("<div id=\"hints\"><strong>Hints:</strong> "));
 			WriteString(hFile, GsHints);
-			WriteString(hFile, _T("</div>\n"));			
+			WriteString(hFile, _T("</div>\n"));
 		}
-		
+
 		if (GsTravelBugs.GetCount() > 0) {
 			// travel bugs
 			WriteString(hFile, _T("<div id=\"inventory\">\n"));
 			WriteString(hFile, _T("<strong>Inventory:</strong>\n"));
-			
+
 			WriteString(hFile, _T("<ul>\n"));
 			POSITION pos = GsTravelBugs.GetHeadPosition();
 			while (pos != NULL) {
 				CTravelBug *tb = GsTravelBugs.GetNext(pos);
-				
+
 				WriteString(hFile, _T("<li>"));
 				WriteString(hFile, tb->Name);
 				WriteString(hFile, _T("</li>\n"));
 			}
-			WriteString(hFile, _T("</ul>\n"));	
+			WriteString(hFile, _T("</ul>\n"));
 			WriteString(hFile, _T("</div>\n"));
 		}
 
-		WriteString(hFile, _T("</div>\n"));	
-		
+		WriteString(hFile, _T("</div>\n"));
+
 		// log entries
 		WriteString(hFile, _T("<div id=\"cache-log\">Cache Logs:</div>\n"));
 		WriteString(hFile, _T("<div class=\"body\">\n"));
@@ -242,7 +245,7 @@ static void DumpHtmlFile(const CString &id) {
 			POSITION pos = GsLog.GetHeadPosition();
 			while (pos != NULL) {
 				CLogEntry *le = GsLog.GetNext(pos);
-				
+
 				// title
 				WriteString(hFile, _T("<div><strong>"));
 				WriteTime(hFile, &(le->Date));
@@ -307,7 +310,7 @@ startElement(void *userData, const char *name, const char **attr) {
 			}
 		}
 	}
-	else if (WptMainState == Wpt) {	
+	else if (WptMainState == Wpt) {
 		if (strcmp(name, "name") == 0) WptState = Name;
 		else if (strcmp(name, "desc") == 0) WptState = Desc;
 		else if (strcmp(name, "url") == 0) WptState = Url;
@@ -323,9 +326,60 @@ startElement(void *userData, const char *name, const char **attr) {
 		else if (strcmp(name, "groundspeak:short_description") == 0) WptState = GS_ShortDescription;
 		else if (strcmp(name, "groundspeak:long_description") == 0) WptState = GS_LongDescription;
 		else if (strcmp(name, "groundspeak:encoded_hints") == 0) WptState = GS_Hints;
-		// main state 
+		// main state
 		else if (strcmp(name, "groundspeak:logs") == 0) WptMainState = GS_Logs;
 		else if (strcmp(name, "groundspeak:travelbugs") == 0) WptMainState = GS_TBs;
+		else if (strcmp(name, "geocache") == 0) {
+			// geocaching.com.au geocache tag
+			for (int i = 0; attr[i]; i += 2) {
+				if (strcmp(attr[i], "xmlns") == 0 && strstr(attr[i + 1], "http://geocaching.com.au/geocache") != NULL) {
+					WptMainState = GCAU_Cache;
+				}
+			}
+		}
+	}
+	else if (WptMainState == GCAU_Cache) {
+		// geocaching.com.au schema-style geocache tag support
+		if (strcmp(name, "name") == 0) WptState = GS_Name;
+		else if (strcmp(name, "owner") == 0) WptState = GS_PlacedBy;
+		else if (strcmp(name, "locale") == 0) WptState = X_Unsupported;
+		else if (strcmp(name, "state") == 0) WptState = X_Unsupported;
+		else if (strcmp(name, "country") == 0) WptState = X_Unsupported;
+		else if (strcmp(name, "type") == 0) WptState = GS_Type;
+		else if (strcmp(name, "container") == 0) WptState = GS_Container;
+		else if (strcmp(name, "difficulty") == 0) WptState = GS_Difficulty;
+		else if (strcmp(name, "terrain") == 0) WptState = GS_Terrain;
+		else if (strcmp(name, "summary") == 0) WptState = GS_ShortDescription;
+		else if (strcmp(name, "description") == 0) WptState = GS_LongDescription;
+		else if (strcmp(name, "hints") == 0) WptState = GS_Hints;
+		else if (strcmp(name, "licence") == 0) WptState = X_Unsupported;
+		else if (strcmp(name, "logs") == 0) WptMainState = GCAU_Logs;
+
+	}
+	else if (WptMainState == GCAU_Logs) {
+		if (strcmp(name, "log") == 0) {
+			for (int i = 0; attr[i]; i += 2) {
+				if (strcmp(attr[i], "id") == 0) {
+					int id;
+					sscanf(attr[i + 1], "%d", &id);
+					if (id > 0) {
+						GsLogEntry = new CLogEntry;
+					}
+					else {
+						GsLogEntry = NULL;
+					}
+				}
+			}
+		}
+		else if (strcmp(name, "time") == 0) WptState = GS_LogDate;
+		else if (strcmp(name, "type") == 0) WptState = GS_LogType;
+		else if (strcmp(name, "geocacher") == 0) WptState = GS_LogFinder;
+		else if (strcmp(name, "text") == 0) {
+			WptState = GS_LogText;
+			// no log encoding support in GCAU schema
+			if (GsLogEntry != NULL)
+				GsLogEntry->Encoded = FALSE;
+		}
 	}
 	else if (WptMainState == GS_Logs) {
 		if (strcmp(name, "groundspeak:log") == 0) {
@@ -352,7 +406,7 @@ startElement(void *userData, const char *name, const char **attr) {
 					encoded = TRUE;
 			}
 			WptState = GS_LogText;
-			
+
 			if (GsLogEntry != NULL)
 				GsLogEntry->Encoded = encoded;
 		}
@@ -372,7 +426,7 @@ endElement(void *userData, const char *name) {
 	if (strcmp(name, "wpt") == 0) {
 		// if <groundspeak:name> was specified, use it
 		if (!GsName.IsEmpty()) Poi->Name = GsName;
-		
+
 		pois->AddTail(Poi);
 		// if <groundspeak:XXX> tags were specified, dump an HTML file to the cache
 		if (!GsName.IsEmpty())
@@ -402,14 +456,25 @@ endElement(void *userData, const char *name) {
 	else if (strcmp(name, "groundspeak:travelbugs") == 0) {
 		WptMainState = Wpt;
 	}
-	
+	else if (strcmp(name, "geocache") == 0 && WptMainState == GCAU_Cache) {
+		WptMainState = Wpt;
+	}
+	else if (strcmp(name, "logs") == 0 && WptMainState == GCAU_Logs) {
+		WptMainState = GCAU_Cache;
+	}
+	else if (strcmp(name, "log") == 0 && WptMainState == GCAU_Logs) {
+		if (GsLogEntry != NULL) {
+			GsLog.AddTail(GsLogEntry);
+			GsLogEntry = NULL;
+		}
+	}
 	WptState = None;
 }
 
-static void XMLCALL 
+static void XMLCALL
 charDataHandler(void *userData, const XML_Char *s, int len) {
-	if (WptMainState == Wpt && Poi != NULL) {
-		if (WptState == Name) {		
+	if ((WptMainState == Wpt || WptMainState == GCAU_Cache) && Poi != NULL) {
+		if (WptState == Name) {
 			if (SwitchNameDesc) Poi->Name = CharToWChar(s, len, CP_UTF8);
 			else Poi->Id = CharToWChar(s, len, CP_UTF8);
 		}
@@ -425,7 +490,7 @@ charDataHandler(void *userData, const XML_Char *s, int len) {
 			sscanf(s, "%d-%d-%d", &year, &month, &day);
 			GsTime.wYear = year;
 			GsTime.wMonth = month;
-			GsTime.wDay = day;			
+			GsTime.wDay = day;
 		}
 		else if (WptState == GS_Type) {
 			GsType = CharToWChar(s, len, CP_UTF8);
@@ -447,10 +512,13 @@ charDataHandler(void *userData, const XML_Char *s, int len) {
 				Poi->Type = CPoi::Virtual;
 			else if (type.Find(_T("unknown cache")) != -1)
 				Poi->Type = CPoi::Unknown;
+			/* GCAU types... */
+			else if (type.Find(_T("traditional")) != -1)
+				Poi->Type = CPoi::Traditional;
 		}
 		else if (WptState == GS_Cache) ;
 		else if (WptState == GS_ShortDescription) GsShortDesc += CharToWChar(s, len, CP_UTF8);
-		else if (WptState == GS_LongDescription) GsLongDesc += CharToWChar(s, len, CP_UTF8);			
+		else if (WptState == GS_LongDescription) GsLongDesc += CharToWChar(s, len, CP_UTF8);
 		else if (WptState == GS_Name) GsName += CharToWChar(s, len, CP_UTF8);
 		else if (WptState == GS_Owner) GsOwner += CharToWChar(s, len, CP_UTF8);
 		else if (WptState == GS_Container) GsContainer += CharToWChar(s, len, CP_UTF8);
@@ -459,7 +527,7 @@ charDataHandler(void *userData, const XML_Char *s, int len) {
 		else if (WptState == GS_PlacedBy) GsPlacedBy += CharToWChar(s, len, CP_UTF8);
 		else if (WptState == GS_Hints) GsHints += CharToWChar(s, len, CP_UTF8);
 	}
-	else if (WptMainState == GS_Logs && GsLogEntry != NULL) {
+	else if ((WptMainState == GS_Logs || WptMainState == GCAU_Logs) && GsLogEntry != NULL) {
 		if (WptState == GS_LogDate) {
 			int year, month, day;
 			sscanf(s, "%d-%d-%d", &year, &month, &day);
@@ -490,7 +558,7 @@ BOOL ReadGpxFile(const CString &fileName, CList<CPoi *, CPoi *> &pois) {
 	Poi = NULL;
 	GsLogEntry = NULL;
 	GsTravelBug = NULL;
-	
+
 	BOOL ret = TRUE;
 	Parser = XML_ParserCreate(NULL);
 	XML_SetUserData(Parser, &pois);
