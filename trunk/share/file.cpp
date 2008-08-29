@@ -124,8 +124,8 @@ BOOL CBufferedFile::Read(LPVOID lpBuffer, DWORD nNumberOfBytesToRead, DWORD *nBy
 				BufferFilled = read;
 				BufferPos = 0;
 
-				if (!ret || read == 0)	{
-					// reading beyond the end of the file
+				if (!ret || (ret && read == 0))	{
+					// error or reading beyond the end of the file
 					ret = FALSE;
 					break;
 				}
