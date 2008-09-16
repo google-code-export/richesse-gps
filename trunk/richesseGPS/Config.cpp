@@ -209,6 +209,9 @@ void CConfig::Save() {
 
 		RegCloseKey(hApp);
 	}
+	
+	if (Config.PreventSuspend)
+		SuspendKiller.Stop();
 }
 
 void CConfig::Load() {

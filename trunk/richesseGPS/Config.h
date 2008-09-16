@@ -26,6 +26,7 @@
 #endif // _MSC_VER > 1000
 
 #include "../share/defs.h"
+#include "misc/SuspendKiller.h"
 
 // config
 #define CONFIG_DEFAULT_INSTALL_DIR			_T("\\")
@@ -130,6 +131,9 @@ public:
 
 	void Save();
 	void Load();
+
+protected:
+	CSuspendKiller SuspendKiller;
 };
 
 extern CConfig Config;
