@@ -472,6 +472,11 @@ BEGIN
     MENUITEM "GPS On",                      ID_GPS_ON
     POPUP "Menu"
     BEGIN
+        MENUITEM "Compass",						ID_MENU_COMPASS_VIEW
+        MENUITEM "Notepad",						ID_MENU_NOTEPAD_VIEW
+        MENUITEM "POI info",					ID_MENU_POIINFO_VIEW
+        MENUITEM "Add new POI",					ID_MENU_ADD_NEW_POI
+        MENUITEM SEPARATOR
         MENUITEM "POI Manager...",              ID_MENU_POIMANAGER
         MENUITEM "Radar...",                    ID_MENU_RADAR
         MENUITEM "GPS Info...",                 ID_MENU_GPSINFO

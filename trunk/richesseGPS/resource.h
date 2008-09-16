@@ -176,13 +176,17 @@
 #define ID_COPY_LATITUDE                32828
 #define ID_MENU_EXPORT_KML              32829
 #define ID_MENU_DOWNLOADINFO            32830
+#define ID_MENU_COMPASS_VIEW			32840
+#define ID_MENU_NOTEPAD_VIEW			32841
+#define ID_MENU_POIINFO_VIEW			32842
+#define ID_MENU_ADD_NEW_POI				32843
 
 // Next default values for new objects
 //
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NEXT_RESOURCE_VALUE        154
-#define _APS_NEXT_COMMAND_VALUE         32831
+#define _APS_NEXT_COMMAND_VALUE         32844
 #define _APS_NEXT_CONTROL_VALUE         1053
 #define _APS_NEXT_SYMED_VALUE           109
 #endif
