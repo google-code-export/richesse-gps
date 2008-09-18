@@ -805,6 +805,13 @@ void CPoiMan::OnUpdateMarkAs(CCmdUI *pCmdUI) {
 void CPoiMan::OnDownloadInfo() {
 	CDownloadManagerDlg dlg;
 
+	// check for working internet connection
+	if (InternetCheckConnection(_T("http://www.geocaching.com/"),FLAG_ICC_FORCE_CONNECTION, 0) == 0)
+	{
+		AfxMessageBox(IDS_NO_NET_CONNECTION, MB_OK);
+		return;
+	}
+
 	// gather selected POIs
 	int nSelItem = m_ctlPoints.GetNextItem(-1, LVNI_SELECTED);
 	while (nSelItem != -1) {
