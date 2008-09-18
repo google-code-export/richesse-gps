@@ -447,6 +447,7 @@ BEGIN
     IDS_NO_WAYPOINT_SELECTED "No waypoint selected"
     IDS_VIRTUAL             "Virtual"
     IDS_ABOUT               "About"
+    IDS_NO_NET_CONNECTION	"No active internet connection!"
 END
 
 #endif    // Czech resources

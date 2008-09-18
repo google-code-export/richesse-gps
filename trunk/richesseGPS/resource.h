@@ -79,6 +79,7 @@
 #define IDS_NO_WAYPOINT_SELECTED        237
 #define IDS_VIRTUAL                     238
 #define IDS_ABOUT                       239
+#define IDS_NO_NET_CONNECTION			240
 #define IDC_HOMEPAGE                    1000
 #define IDC_PATH                        1001
 #define IDC_DIRS                        1002
