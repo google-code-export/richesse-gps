@@ -1,3 +1,15 @@
 #summary Frequently Asked Questions
 
-TODO
+ # How to make RichesseGPS work on HTC Touch HD?
+
+   * *Start | Settings*, select *System* tab, tap on *External GPS*
+   * On *program* tab, select *COM6* for GPS program port
+   * On *Hardware* tab, leave the option *GPS hardware port* blank (i.e. *(none)*)
+   * On *Access* tab, check *Manage GPS automatically*
+ 
+   * In RichcesseGPS, go *Menu | Options*, select *GPS* tab
+   * Set the GPS port to *COM6*
+
+   * Try to tap on *GPS On*, on the main window. It can take a while till you see something.
+
+ These are working options on my device, but rememeber that YMMV...
